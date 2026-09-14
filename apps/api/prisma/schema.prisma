@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  name         String?
+  passwordHash String?
+  googleId     String?       @unique
+  createdAt    DateTime      @default(now())
+  settings     Settings?
+  cards        Card[]
+  tags         Tag[]
+  transactions Transaction[]
+}
+
+model Settings {
+  id              String @id @default(cuid())
+  userId          String @unique
+  user            User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  openingBalance  Float  @default(0)
+  projectionMonths Int   @default(12)
+  horizonMonths   Int    @default(12)
+}
+
+model Card {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name       String
+  brand      String
+  limitAmount Float   @map("limit_amount")
+  closingDay Int
+  dueDay     Int
+  color      String
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Tag {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  color     String
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Transaction {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date        String
+  bucket      String
+  amount      Float
+  description String
+  tags        String[] @default([])
+  cardId      String?
+  seriesId    String?
+  seriesKind  String?
+  seriesIndex Int?
+  seriesTotal Int?
+  createdAt   DateTime @default(now())
+
+  @@index([userId, date])
+}

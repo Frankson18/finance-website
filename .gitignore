@@ -1,0 +1,22 @@
+# dependencies
+/node_modules
+**/node_modules
+
+# builds
+.next/
+**/.next/
+dist/
+**/dist/
+
+# env
+.env
+.env*.local
+**/.env
+!**/.env.example
+
+# misc
+.DS_Store
+*.pem
+*.log
+*.tsbuildinfo
+next-env.d.ts

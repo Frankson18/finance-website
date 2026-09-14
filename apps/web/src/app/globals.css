@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #1d1f23;
+  --color-panel: #1d1f23;
+  --color-raised: #262a30;
+  --color-raised-2: #2b2e34;
+  --color-line: rgba(255, 255, 255, 0.15);
+  --color-line-soft: rgba(255, 255, 255, 0.08);
+  --color-ink: #ededee;
+  --color-dim: #484d57;
+  --color-muted: #8b929d;
+  --color-green: #3a7a2f;
+  --color-green-bright: #58a847;
+  --color-brand: #3b82f6;
+  --color-brand-bright: #60a5fa;
+  --color-orange: #ff5917;
+  --color-red: #e5484d;
+  --color-blue: #3b82f6;
+
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 12px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3a3e46 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #3a3e46;
+  border-radius: 999px;
+  border: 2px solid #1d1f23;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+  cursor: pointer;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

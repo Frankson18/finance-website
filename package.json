@@ -1,0 +1,16 @@
+{
+  "name": "finance-website",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "npm run dev -w @fluxo/web",
+    "build": "npm run build -w @fluxo/web",
+    "api": "npm run dev -w @fluxo/api",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:generate": "npm run prisma:generate -w @fluxo/api",
+    "db:migrate": "npm run prisma:migrate -w @fluxo/api",
+    "db:deploy": "npm run prisma:deploy -w @fluxo/api",
+    "db:studio": "npm run prisma:studio -w @fluxo/api"
+  }
+}

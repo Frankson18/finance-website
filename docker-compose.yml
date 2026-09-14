@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16
+    container_name: fluxo-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: fluxo
+      POSTGRES_PASSWORD: fluxo
+      POSTGRES_DB: fluxo
+    ports:
+      - "5432:5432"
+    volumes:
+      - fluxo-db:/var/lib/postgresql/data
+
+volumes:
+  fluxo-db:
