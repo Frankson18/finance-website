@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { Card } from "@/lib/types";
-import { formatBRL } from "@/lib/format";
+import { formatBRL, plural } from "@/lib/format";
 import {
   formatFullDate,
   formatMonthLong,
@@ -39,7 +39,10 @@ export function CartoesView() {
 
   return (
     <>
-      <PageHeader title="cartões" subtitle={`${cards.length} cartões`}>
+      <PageHeader
+        title="cartões"
+        subtitle={`${cards.length} ${plural(cards.length, "cartão", "cartões")}`}
+      >
         <Button size="sm" onClick={() => openCardDialog(null)}>
           <Plus className="h-4 w-4" /> novo cartão
         </Button>
@@ -277,7 +280,10 @@ function InvoiceModal({
                 onClick={() => openTransactionDialog({ id: t.id })}
                 className="min-w-0 flex-1 text-left"
               >
-                <p className="truncate text-sm">{t.description}</p>
+                <p className="truncate text-sm">{t.title}</p>
+                {t.description ? (
+                  <p className="truncate text-xs text-muted">{t.description}</p>
+                ) : null}
                 <p className="text-xs text-muted">
                   {[
                     formatFullDate(t.date),

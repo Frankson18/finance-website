@@ -11,6 +11,7 @@ import {
 import {
   AppState,
   Card,
+  Goal,
   Settings,
   Tag,
   Transaction,
@@ -23,12 +24,14 @@ const EMPTY: AppState = {
   transactions: [],
   cards: [],
   tags: [],
+  goals: [],
   settings: { openingBalance: 0, projectionMonths: 12, horizonMonths: 12 },
 };
 
 interface StoreValue {
   ready: boolean;
   state: AppState;
+  syncError: string | null;
   addTransaction: (input: Omit<Transaction, "id" | "createdAt">) => Transaction;
   addTransactions: (
     inputs: Omit<Transaction, "id" | "createdAt">[],
@@ -41,6 +44,9 @@ interface StoreValue {
   addTag: (name: string, color: string) => Tag;
   updateTag: (id: string, patch: Partial<Tag>) => void;
   deleteTag: (id: string) => void;
+  addGoal: (input: Omit<Goal, "id" | "createdAt">) => Goal;
+  updateGoal: (id: string, patch: Partial<Goal>) => void;
+  deleteGoal: (id: string) => void;
   updateSettings: (patch: Partial<Settings>) => void;
   reset: () => void;
   importState: (next: AppState) => void;
@@ -52,6 +58,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const { user, ready: authReady } = useAuth();
   const [state, setState] = useState<AppState>(EMPTY);
   const [ready, setReady] = useState(false);
+  const [syncError, setSyncError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authReady) return;
@@ -79,9 +86,22 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   }, [user, authReady]);
 
   const fire = useCallback((path: string, method: string, body?: unknown) => {
-    void api(path, { method, body }).catch((err) =>
-      console.error("[fluxo] api error", path, err),
-    );
+    const run = (attempt: number) => {
+      api(path, { method, body }).catch((err: unknown) => {
+        const message = err instanceof Error ? err.message : "erro";
+        if (message === "unauthorized") return;
+        if (message === "network" && attempt < 3) {
+          window.setTimeout(() => run(attempt + 1), 1200);
+          return;
+        }
+        console.error("[fluxo] api error", path, message);
+        setSyncError(
+          "Não foi possível salvar — tentaremos de novo ao recarregar.",
+        );
+        window.setTimeout(() => setSyncError(null), 5000);
+      });
+    };
+    run(0);
   }, []);
 
   const addTransaction = useCallback<StoreValue["addTransaction"]>(
@@ -203,6 +223,41 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     [fire],
   );
 
+  const addGoal = useCallback<StoreValue["addGoal"]>(
+    (input) => {
+      const goal: Goal = { ...input, id: makeId("goal"), createdAt: Date.now() };
+      setState((s) => ({ ...s, goals: [...s.goals, goal] }));
+      fire("/api/goals", "POST", goal);
+      return goal;
+    },
+    [fire],
+  );
+
+  const updateGoal = useCallback<StoreValue["updateGoal"]>(
+    (id, patch) => {
+      setState((s) => ({
+        ...s,
+        goals: s.goals.map((g) => (g.id === id ? { ...g, ...patch } : g)),
+      }));
+      fire(`/api/goals/${id}`, "PATCH", patch);
+    },
+    [fire],
+  );
+
+  const deleteGoal = useCallback<StoreValue["deleteGoal"]>(
+    (id) => {
+      setState((s) => ({
+        ...s,
+        goals: s.goals.filter((g) => g.id !== id),
+        transactions: s.transactions.map((t) =>
+          t.goalId === id ? { ...t, goalId: undefined } : t,
+        ),
+      }));
+      fire(`/api/goals/${id}`, "DELETE");
+    },
+    [fire],
+  );
+
   const updateSettings = useCallback<StoreValue["updateSettings"]>(
     (patch) => {
       setState((s) => ({ ...s, settings: { ...s.settings, ...patch } }));
@@ -229,6 +284,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     () => ({
       ready,
       state,
+      syncError,
       addTransaction,
       addTransactions,
       updateTransaction,
@@ -239,6 +295,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       addTag,
       updateTag,
       deleteTag,
+      addGoal,
+      updateGoal,
+      deleteGoal,
       updateSettings,
       reset,
       importState,
@@ -246,6 +305,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     [
       ready,
       state,
+      syncError,
       addTransaction,
       addTransactions,
       updateTransaction,
@@ -256,6 +316,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       addTag,
       updateTag,
       deleteTag,
+      addGoal,
+      updateGoal,
+      deleteGoal,
       updateSettings,
       reset,
       importState,

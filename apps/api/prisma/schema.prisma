@@ -17,6 +17,7 @@ model User {
   settings     Settings?
   cards        Card[]
   tags         Tag[]
+  goals        Goal[]
   transactions Transaction[]
 }
 
@@ -55,6 +56,18 @@ model Tag {
   @@index([userId])
 }
 
+model Goal {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  target    Float
+  color     String
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
 model Transaction {
   id          String   @id @default(cuid())
   userId      String
@@ -62,9 +75,11 @@ model Transaction {
   date        String
   bucket      String
   amount      Float
-  description String
+  title       String   @default("")
+  description String   @default("")
   tags        String[] @default([])
   cardId      String?
+  goalId      String?
   seriesId    String?
   seriesKind  String?
   seriesIndex Int?

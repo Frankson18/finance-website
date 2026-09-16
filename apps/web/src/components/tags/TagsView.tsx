@@ -6,7 +6,7 @@ import { useStore } from "@/lib/store";
 import { BUCKET_LABELS, Tag } from "@/lib/types";
 import { BUCKET_COLORS, BUCKET_ICONS } from "@/lib/theme";
 import { TAG_COLORS } from "@/lib/seed";
-import { formatBRL } from "@/lib/format";
+import { formatBRL, plural } from "@/lib/format";
 import { formatDayMonth } from "@/lib/date";
 import { PageBody, PageHeader } from "../PageHeader";
 import { Button, EmptyState, Input, cx } from "../ui";
@@ -51,7 +51,14 @@ export function TagsView() {
 
   return (
     <>
-      <PageHeader title="tags" subtitle={`${state.tags.length} etiquetas`}>
+      <PageHeader
+        title="tags"
+        subtitle={`${state.tags.length} ${plural(
+          state.tags.length,
+          "etiqueta",
+          "etiquetas",
+        )}`}
+      >
         <Button size="sm" onClick={() => setCreating((v) => !v)}>
           <Plus className="h-4 w-4" /> nova tag
         </Button>
@@ -131,7 +138,12 @@ export function TagsView() {
                             {tag.name}
                           </span>
                           <span className="text-xs text-muted">
-                            {count} movimentação(ões)
+                            {count}{" "}
+                            {plural(
+                              count,
+                              "movimentação",
+                              "movimentações",
+                            )}
                           </span>
                         </span>
                       </button>
@@ -170,7 +182,8 @@ export function TagsView() {
               </h2>
               {selected && (
                 <span className="text-xs text-muted">
-                  {selectedTx.length} registro(s)
+                  {selectedTx.length}{" "}
+                  {plural(selectedTx.length, "registro", "registros")}
                 </span>
               )}
             </div>
@@ -205,7 +218,7 @@ export function TagsView() {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm">
-                        {t.description}
+                        {t.title}
                       </span>
                       <span className="text-xs text-muted">
                         {formatDayMonth(t.date)} · {BUCKET_LABELS[t.bucket]}
@@ -253,13 +266,13 @@ function TagEditor({
           onChange={(e) => setName(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && onSave({ name, color })}
         />
-        <Button size="icon" onClick={() => onSave({ name, color })}>
+        <Button size="icon" onClick={() => onSave({ name, color })} aria-label="Salvar tag">
           <Check className="h-4 w-4" />
         </Button>
-        <Button size="icon" variant="ghost" onClick={onCancel}>
+        <Button size="icon" variant="ghost" onClick={onCancel} aria-label="Cancelar">
           <X className="h-4 w-4" />
         </Button>
-        <Button size="icon" variant="danger" onClick={onDelete}>
+        <Button size="icon" variant="danger" onClick={onDelete} aria-label="Excluir tag">
           <Trash2 className="h-4 w-4" />
         </Button>
       </div>

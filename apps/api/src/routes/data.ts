@@ -3,10 +3,12 @@ import {
   AppState,
   Card,
   DEFAULT_SETTINGS,
+  Goal,
   Settings,
   Tag,
   Transaction,
   cardInputSchema,
+  goalInputSchema,
   settingsInputSchema,
   tagInputSchema,
   transactionInputSchema,
@@ -18,9 +20,11 @@ function serializeTx(t: {
   date: string;
   bucket: string;
   amount: number;
+  title: string;
   description: string;
   tags: string[];
   cardId: string | null;
+  goalId: string | null;
   seriesId: string | null;
   seriesKind: string | null;
   seriesIndex: number | null;
@@ -32,15 +36,33 @@ function serializeTx(t: {
     date: t.date,
     bucket: t.bucket as Transaction["bucket"],
     amount: t.amount,
+    title: t.title,
     description: t.description,
     tags: t.tags,
     cardId: t.cardId ?? undefined,
+    goalId: t.goalId ?? undefined,
     createdAt: t.createdAt.getTime(),
     seriesId: t.seriesId ?? undefined,
     seriesKind:
       (t.seriesKind as Transaction["seriesKind"]) ?? undefined,
     seriesIndex: t.seriesIndex ?? undefined,
     seriesTotal: t.seriesTotal ?? undefined,
+  };
+}
+
+function serializeGoal(g: {
+  id: string;
+  name: string;
+  target: number;
+  color: string;
+  createdAt: Date;
+}): Goal {
+  return {
+    id: g.id,
+    name: g.name,
+    target: g.target,
+    color: g.color,
+    createdAt: g.createdAt.getTime(),
   };
 }
 
@@ -80,19 +102,21 @@ function serializeSettings(
 }
 
 async function loadState(userId: string): Promise<AppState> {
-  const [transactions, cards, tags, settings] = await Promise.all([
+  const [transactions, cards, tags, goals, settings] = await Promise.all([
     prisma.transaction.findMany({
       where: { userId },
       orderBy: { createdAt: "desc" },
     }),
     prisma.card.findMany({ where: { userId }, orderBy: { createdAt: "asc" } }),
     prisma.tag.findMany({ where: { userId }, orderBy: { createdAt: "asc" } }),
+    prisma.goal.findMany({ where: { userId }, orderBy: { createdAt: "asc" } }),
     prisma.settings.findUnique({ where: { userId } }),
   ]);
   return {
     transactions: transactions.map(serializeTx),
     cards: cards.map(serializeCard),
     tags: tags.map(serializeTag),
+    goals: goals.map(serializeGoal),
     settings: serializeSettings(settings),
   };
 }
@@ -115,6 +139,7 @@ export async function dataRoutes(app: FastifyInstance) {
         ...parsed.data,
         userId,
         cardId: parsed.data.cardId ?? null,
+        goalId: parsed.data.goalId ?? null,
         seriesId: parsed.data.seriesId ?? null,
         seriesKind: parsed.data.seriesKind ?? null,
         seriesIndex: parsed.data.seriesIndex ?? null,
@@ -136,6 +161,7 @@ export async function dataRoutes(app: FastifyInstance) {
             ...data,
             userId,
             cardId: data.cardId ?? null,
+            goalId: data.goalId ?? null,
             seriesId: data.seriesId ?? null,
             seriesKind: data.seriesKind ?? null,
             seriesIndex: data.seriesIndex ?? null,
@@ -154,11 +180,12 @@ export async function dataRoutes(app: FastifyInstance) {
       return reply.code(400).send({ error: "invalid", issues: parsed.error.issues });
     }
     const userId = request.user.sub;
-    const { tags, cardId, seriesId, seriesKind, seriesIndex, seriesTotal, ...rest } =
+    const { tags, cardId, goalId, seriesId, seriesKind, seriesIndex, seriesTotal, ...rest } =
       parsed.data;
     const data: Record<string, unknown> = { ...rest };
     if (tags !== undefined) data.tags = tags;
     if (cardId !== undefined) data.cardId = cardId ?? null;
+    if (goalId !== undefined) data.goalId = goalId ?? null;
     if (seriesId !== undefined) data.seriesId = seriesId ?? null;
     if (seriesKind !== undefined) data.seriesKind = seriesKind ?? null;
     if (seriesIndex !== undefined) data.seriesIndex = seriesIndex ?? null;
@@ -256,6 +283,45 @@ export async function dataRoutes(app: FastifyInstance) {
     return reply.send({ ok: true });
   });
 
+  app.post("/goals", async (request, reply) => {
+    const parsed = goalInputSchema.safeParse(request.body);
+    if (!parsed.success) {
+      return reply.code(400).send({ error: "invalid", issues: parsed.error.issues });
+    }
+    const goal = await prisma.goal.create({
+      data: { ...parsed.data, userId: request.user.sub },
+    });
+    return reply.send(serializeGoal(goal));
+  });
+
+  app.patch("/goals/:id", async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const parsed = goalInputSchema.partial().safeParse(request.body);
+    if (!parsed.success) {
+      return reply.code(400).send({ error: "invalid", issues: parsed.error.issues });
+    }
+    await prisma.goal.updateMany({
+      where: { id, userId: request.user.sub },
+      data: parsed.data,
+    });
+    const goal = await prisma.goal.findFirst({
+      where: { id, userId: request.user.sub },
+    });
+    if (!goal) return reply.code(404).send({ error: "not_found" });
+    return reply.send(serializeGoal(goal));
+  });
+
+  app.delete("/goals/:id", async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const userId = request.user.sub;
+    await prisma.transaction.updateMany({
+      where: { userId, goalId: id },
+      data: { goalId: null },
+    });
+    await prisma.goal.deleteMany({ where: { id, userId } });
+    return reply.send({ ok: true });
+  });
+
   app.patch("/settings", async (request, reply) => {
     const parsed = settingsInputSchema.partial().safeParse(request.body);
     if (!parsed.success) {
@@ -282,9 +348,11 @@ export async function dataRoutes(app: FastifyInstance) {
       prisma.transaction.deleteMany({ where: { userId } }),
       prisma.card.deleteMany({ where: { userId } }),
       prisma.tag.deleteMany({ where: { userId } }),
+      prisma.goal.deleteMany({ where: { userId } }),
     ]);
     const tags = Array.isArray(body.tags) ? body.tags : [];
     const cards = Array.isArray(body.cards) ? body.cards : [];
+    const goals = Array.isArray(body.goals) ? body.goals : [];
     const transactions = Array.isArray(body.transactions) ? body.transactions : [];
     if (tags.length) {
       await prisma.tag.createMany({
@@ -310,6 +378,17 @@ export async function dataRoutes(app: FastifyInstance) {
         })),
       });
     }
+    if (goals.length) {
+      await prisma.goal.createMany({
+        data: goals.map((g) => ({
+          id: g.id,
+          userId,
+          name: g.name,
+          target: g.target,
+          color: g.color,
+        })),
+      });
+    }
     if (transactions.length) {
       await prisma.transaction.createMany({
         data: transactions.map((t) => ({
@@ -318,9 +397,11 @@ export async function dataRoutes(app: FastifyInstance) {
           date: t.date,
           bucket: t.bucket,
           amount: t.amount,
-          description: t.description,
+          title: t.title ?? t.description ?? "",
+          description: t.description ?? "",
           tags: t.tags,
           cardId: t.cardId ?? null,
+          goalId: t.goalId ?? null,
           seriesId: t.seriesId ?? null,
           seriesKind: t.seriesKind ?? null,
           seriesIndex: t.seriesIndex ?? null,

@@ -23,7 +23,7 @@ import {
   todayISO,
   toISODate,
 } from "@/lib/date";
-import { formatBRL } from "@/lib/format";
+import { formatBRL, plural } from "@/lib/format";
 import { saldoColor } from "@/lib/saldo";
 import {
   balanceBefore,
@@ -240,7 +240,7 @@ function MonthGrid({
               {formatMonthLong(date)}
             </h2>
             <span className="text-[11px] text-muted">
-              {comp.count} dia(s) com lançamento
+              {comp.count} {plural(comp.count, "dia", "dias")} com lançamento
             </span>
           </div>
           <div

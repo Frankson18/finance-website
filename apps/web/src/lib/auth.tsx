@@ -9,7 +9,7 @@ import {
   useState,
 } from "react";
 import { AuthResponse, PublicUser } from "@fluxo/shared";
-import { api, clearToken, getToken, setToken } from "./api";
+import { api, clearToken, getToken, setToken, UNAUTHORIZED_EVENT } from "./api";
 
 interface AuthValue {
   user: PublicUser | null;
@@ -36,6 +36,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     api<{ google: boolean }>("/api/auth/providers")
       .then((p) => setProviders(p))
       .catch(() => setProviders({ google: false }));
+  }, []);
+
+  useEffect(() => {
+    const handler = () => setUser(null);
+    window.addEventListener(UNAUTHORIZED_EVENT, handler);
+    return () => window.removeEventListener(UNAUTHORIZED_EVENT, handler);
   }, []);
 
   const reload = useCallback(async () => {

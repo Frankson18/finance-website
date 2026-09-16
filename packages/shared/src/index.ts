@@ -20,11 +20,14 @@ export const BUCKET_LABELS: Record<Bucket, string> = {
 
 export type RepeatKind = "none" | "installment" | "recurring";
 
+export type RepeatUnit = "day" | "week" | "month";
+
 export interface RepeatConfig {
   kind: RepeatKind;
   installments: number;
-  intervalMonths: number;
-  months: number;
+  unit: RepeatUnit;
+  interval: number;
+  occurrences: number;
   indefinite: boolean;
 }
 
@@ -33,9 +36,11 @@ export interface Transaction {
   date: string; // yyyy-MM-dd
   bucket: Bucket;
   amount: number;
+  title: string;
   description: string;
   tags: string[];
   cardId?: string;
+  goalId?: string;
   createdAt: number;
   seriesId?: string;
   seriesKind?: "installment" | "recurring";
@@ -59,6 +64,14 @@ export interface Tag {
   color: string;
 }
 
+export interface Goal {
+  id: string;
+  name: string;
+  target: number;
+  color: string;
+  createdAt: number;
+}
+
 export interface Settings {
   openingBalance: number;
   projectionMonths: number;
@@ -69,6 +82,7 @@ export interface AppState {
   transactions: Transaction[];
   cards: Card[];
   tags: Tag[];
+  goals: Goal[];
   settings: Settings;
 }
 
@@ -90,9 +104,11 @@ export const transactionInputSchema = z.object({
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   bucket: bucketSchema,
   amount: z.number().positive(),
-  description: z.string().min(1).max(200),
+  title: z.string().min(1).max(120),
+  description: z.string().max(500).optional().default(""),
   tags: z.array(z.string()).default([]),
   cardId: z.string().nullish(),
+  goalId: z.string().nullish(),
   seriesId: z.string().nullish(),
   seriesKind: z.enum(["installment", "recurring"]).nullish(),
   seriesIndex: z.number().int().nullish(),
@@ -117,6 +133,14 @@ export const tagInputSchema = z.object({
   color: z.string().min(1).max(40),
 });
 export type TagInput = z.infer<typeof tagInputSchema>;
+
+export const goalInputSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().min(1).max(80),
+  target: z.number().positive(),
+  color: z.string().min(1).max(40),
+});
+export type GoalInput = z.infer<typeof goalInputSchema>;
 
 export const settingsInputSchema = z.object({
   openingBalance: z.number(),

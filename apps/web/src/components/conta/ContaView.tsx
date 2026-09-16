@@ -12,6 +12,7 @@ import {
 import { useStore } from "@/lib/store";
 import { useAuth } from "@/lib/auth";
 import { AppState } from "@/lib/types";
+import { plural } from "@/lib/format";
 import { Button, Field, Input, cx } from "../ui";
 import { MoneyInput } from "../MoneyInput";
 import { PageBody, PageHeader } from "../PageHeader";
@@ -167,8 +168,15 @@ export function ContaView() {
           </section>
 
           <p className="text-center text-xs text-muted">
-            {state.transactions.length} movimentações · {state.cards.length}{" "}
-            cartões · {state.tags.length} tags
+            {state.transactions.length}{" "}
+            {plural(
+              state.transactions.length,
+              "movimentação",
+              "movimentações",
+            )}{" "}
+            · {state.cards.length}{" "}
+            {plural(state.cards.length, "cartão", "cartões")} ·{" "}
+            {state.tags.length} {plural(state.tags.length, "tag", "tags")}
           </p>
         </div>
       </PageBody>

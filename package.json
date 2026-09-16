@@ -6,6 +6,8 @@
     "dev": "npm run dev -w @fluxo/web",
     "build": "npm run build -w @fluxo/web",
     "api": "npm run dev -w @fluxo/api",
+    "api:once": "npm run dev:once -w @fluxo/api",
+    "stop": "fuser -k 3333/tcp 3000/tcp; echo servidores parados",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "db:generate": "npm run prisma:generate -w @fluxo/api",

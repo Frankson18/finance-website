@@ -6,7 +6,7 @@ import { prisma } from "./db.js";
 import { authRoutes } from "./routes/auth.js";
 import { dataRoutes } from "./routes/data.js";
 
-const app = Fastify({ logger: true });
+const app = Fastify({ logger: true, forceCloseConnections: true });
 
 await app.register(cors, {
   origin: true,
@@ -55,6 +55,8 @@ app.get("/health", () => ({ ok: true }));
 
 const shutdown = async (signal: string) => {
   app.log.info(`received ${signal}, shutting down`);
+  const timer = setTimeout(() => process.exit(1), 2000);
+  timer.unref();
   try {
     await app.close();
   } catch {

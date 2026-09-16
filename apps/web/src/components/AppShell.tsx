@@ -2,10 +2,22 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, Plus, X } from "lucide-react";
+import { Menu, Plus, WifiOff, X } from "lucide-react";
 import { Sidebar, SidebarContent } from "./Sidebar";
 import { IconButton } from "./ui";
 import { useUI } from "./ui-context";
+import { useStore } from "@/lib/store";
+
+function SyncToast() {
+  const { syncError } = useStore();
+  if (!syncError) return null;
+  return (
+    <div className="fixed bottom-4 left-1/2 z-50 flex max-w-[90vw] -translate-x-1/2 items-center gap-2 rounded-lg border border-red/40 bg-red/15 px-4 py-2 text-xs font-semibold text-red backdrop-blur-sm">
+      <WifiOff className="h-4 w-4 shrink-0" />
+      {syncError}
+    </div>
+  );
+}
 
 function MobileHeader({ onMenu }: { onMenu: () => void }) {
   const { openTransactionDialog } = useUI();
@@ -76,6 +88,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       </div>
       <Drawer open={drawer} onClose={() => setDrawer(false)} />
+      <SyncToast />
     </>
   );
 }

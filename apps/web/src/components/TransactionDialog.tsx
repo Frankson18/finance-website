@@ -1,25 +1,34 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Check, Plus, Trash2 } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
+import { Check, Pencil, Plus, Trash2 } from "lucide-react";
 import { useStore } from "@/lib/store";
 import {
   BUCKETS,
   Bucket,
   BUCKET_LABELS,
   RepeatConfig,
+  RepeatUnit,
   Transaction,
 } from "@/lib/types";
 import { BUCKET_COLORS, BUCKET_ICONS } from "@/lib/theme";
-import { buildSeries, DEFAULT_REPEAT, seriesLabel } from "@/lib/recurrence";
+import {
+  buildSeries,
+  DEFAULT_REPEAT,
+  seriesLabel,
+  UNIT_ADVERBS,
+  UNIT_LABELS,
+  UNIT_PLURALS,
+} from "@/lib/recurrence";
 import {
   formatFullDate,
   formatMonthShort,
   todayISO,
   toISODate,
 } from "@/lib/date";
-import { formatBRL } from "@/lib/format";
-import { Badge, Button, Field, Input, Modal, Select, cx } from "./ui";
+import { formatBRL, plural } from "@/lib/format";
+import { Badge, Button, Field, Input, Modal, Select, Textarea, cx } from "./ui";
 import { MoneyInput } from "./MoneyInput";
 import { TransactionPrefill, useUI } from "./ui-context";
 
@@ -28,6 +37,7 @@ interface FormState {
   bucket: Bucket;
   amount: number;
   date: string;
+  title: string;
   description: string;
   tags: string[];
   cardId?: string;
@@ -39,6 +49,7 @@ function emptyForm(prefill?: TransactionPrefill): FormState {
     bucket: prefill?.bucket ?? "saidas",
     amount: 0,
     date: prefill?.date ?? todayISO(),
+    title: "",
     description: "",
     tags: [],
     cardId: prefill?.cardId,
@@ -59,6 +70,7 @@ export function TransactionDialog({
   const [form, setForm] = useState<FormState>(() => emptyForm(prefill));
   const [repeat, setRepeat] = useState<RepeatConfig>(DEFAULT_REPEAT);
   const [pendingDelete, setPendingDelete] = useState<Transaction | null>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -67,12 +79,14 @@ export function TransactionDialog({
       ? state.transactions.find((t) => t.id === prefill.id)
       : undefined;
     if (existing) {
+      const hasTitle = Boolean(existing.title?.trim());
       setForm({
         id: existing.id,
         bucket: existing.bucket,
         amount: existing.amount,
         date: existing.date,
-        description: existing.description,
+        title: hasTitle ? existing.title : existing.description,
+        description: hasTitle ? existing.description : "",
         tags: existing.tags,
         cardId: existing.cardId,
       });
@@ -113,10 +127,14 @@ export function TransactionDialog({
         form.amount,
       )} no total`;
     }
+    const every =
+      repeat.interval > 1
+        ? `a cada ${repeat.interval} ${UNIT_PLURALS[repeat.unit]}`
+        : UNIT_ADVERBS[repeat.unit];
     const duration = repeat.indefinite
-      ? "todo mês, sem data para acabar"
-      : `${repeat.months} meses`;
-    return `${duration} · ${formatBRL(form.amount)} por lançamento`;
+      ? "sem data para acabar"
+      : `${repeat.occurrences} vezes`;
+    return `${every}, ${duration} · ${formatBRL(form.amount)} por lançamento`;
   }, [repeat, form.amount, form.id]);
 
   const valid =
@@ -130,7 +148,8 @@ export function TransactionDialog({
       bucket: form.bucket,
       amount: form.amount,
       date: form.date,
-      description: form.description.trim() || BUCKET_LABELS[form.bucket],
+      title: form.title.trim() || BUCKET_LABELS[form.bucket],
+      description: form.description.trim(),
       tags: form.tags,
       cardId: form.bucket === "cartao" ? form.cardId : undefined,
     };
@@ -145,6 +164,7 @@ export function TransactionDialog({
         bucket: form.bucket,
         amount: 0,
         date: form.date,
+        title: "",
         description: "",
         tags: [],
         cardId: form.cardId,
@@ -162,6 +182,37 @@ export function TransactionDialog({
 
   function requestDelete(tx: Transaction) {
     setPendingDelete(tx);
+  }
+
+  function selectForEdit(t: Transaction) {
+    const hasTitle = Boolean(t.title?.trim());
+    setForm({
+      id: t.id,
+      bucket: t.bucket,
+      amount: t.amount,
+      date: t.date,
+      title: hasTitle ? t.title : t.description,
+      description: hasTitle ? t.description : "",
+      tags: t.tags,
+      cardId: t.cardId,
+    });
+    setRepeat(DEFAULT_REPEAT);
+    requestAnimationFrame(() =>
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+    );
+  }
+
+  function startNew() {
+    setForm({
+      bucket: form.bucket,
+      amount: 0,
+      date: form.date,
+      title: "",
+      description: "",
+      tags: [],
+      cardId: form.cardId,
+    });
+    setRepeat(DEFAULT_REPEAT);
   }
 
   function deleteSeries(seriesId: string) {
@@ -182,9 +233,11 @@ export function TransactionDialog({
       onClose={onClose}
       title={form.id ? "Editar movimentação" : "Nova movimentação"}
       description={
-        prefill?.date && prefill?.bucket && !prefill?.id
-          ? `${BUCKET_LABELS[prefill.bucket]} · ${formatFullDate(prefill.date)}`
-          : undefined
+        form.id
+          ? `${form.title.trim() || BUCKET_LABELS[form.bucket]} · ${formatBRL(form.amount)}`
+          : prefill?.date && prefill?.bucket
+            ? `${BUCKET_LABELS[prefill.bucket]} · ${formatFullDate(prefill.date)}`
+            : undefined
       }
       footer={
         <>
@@ -210,7 +263,8 @@ export function TransactionDialog({
             </Button>
           )}
           <Button onClick={() => submit(false)} disabled={!valid}>
-            <Check className="h-4 w-4" /> Salvar
+            <Check className="h-4 w-4" />
+            {form.id ? "Salvar alterações" : "Salvar"}
           </Button>
         </>
       }
@@ -224,21 +278,38 @@ export function TransactionDialog({
             {cellItems.map((t) => (
               <div
                 key={t.id}
-                className="flex items-center gap-1 rounded-lg hover:bg-raised-2"
+                className={cx(
+                  "flex items-center gap-1 rounded-lg",
+                  t.id === form.id
+                    ? "bg-brand/10 ring-1 ring-brand/40 ring-inset"
+                    : "hover:bg-raised-2",
+                )}
               >
                 <button
-                  onClick={() => setForm({ ...t })}
+                  onClick={() => selectForEdit(t)}
                   className="flex min-w-0 flex-1 items-center justify-between gap-3 px-2 py-2 text-left"
                 >
                   <span className="min-w-0">
-                    <span className="block truncate text-sm text-ink">
-                      {t.description}
+                    <span className="flex items-center gap-2">
+                      <span className="block truncate text-sm text-ink">
+                        {t.title?.trim() ? t.title : t.description}
+                      </span>
+                      {t.id === form.id && (
+                        <span className="flex shrink-0 items-center gap-1 rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-bold text-white">
+                          <Pencil className="h-2.5 w-2.5" /> editando
+                        </span>
+                      )}
                     </span>
+                    {t.title?.trim() && t.description ? (
+                      <span className="block truncate text-xs text-muted">
+                        {t.description}
+                      </span>
+                    ) : null}
                     <span className="text-xs text-muted">
                       {[
                         seriesLabel(t),
                         t.tags.length > 0
-                          ? `${t.tags.length} tag(s)`
+                          ? `${t.tags.length} ${plural(t.tags.length, "tag", "tags")}`
                           : "sem tags",
                       ]
                         .filter(Boolean)
@@ -251,7 +322,7 @@ export function TransactionDialog({
                 </button>
                 <button
                   onClick={() => requestDelete(t)}
-                  aria-label={`Excluir ${t.description}`}
+                  aria-label={`Excluir ${t.title || t.description}`}
                   className="shrink-0 rounded-lg p-2 text-muted hover:bg-red/15 hover:text-red"
                 >
                   <Trash2 className="h-4 w-4" />
@@ -261,7 +332,21 @@ export function TransactionDialog({
           </div>
         )}
 
-        <div className="grid grid-cols-5 gap-2">
+        {form.id && (
+          <div className="flex items-center justify-between gap-3 rounded-lg border border-brand/40 bg-brand/10 px-3 py-2">
+            <span className="flex items-center gap-2 text-xs font-semibold text-brand">
+              <Pencil className="h-3.5 w-3.5" /> Editando lançamento
+            </span>
+            <button
+              onClick={startNew}
+              className="text-xs font-semibold text-brand underline hover:no-underline"
+            >
+              Novo lançamento
+            </button>
+          </div>
+        )}
+
+        <div ref={formRef} className="grid grid-cols-5 gap-2">
           {BUCKETS.map((b) => {
             const Icon = BUCKET_ICONS[b];
             const active = form.bucket === b;
@@ -329,10 +414,20 @@ export function TransactionDialog({
           ))}
         </div>
 
-        <Field label="Descrição">
+        <Field label="Título">
           <Input
-            value={form.description}
+            value={form.title}
             placeholder="Ex.: Supermercado, Salário, Uber…"
+            onChange={(e) =>
+              setForm((f) => ({ ...f, title: e.target.value }))
+            }
+          />
+        </Field>
+
+        <Field label="Descrição" hint="Opcional">
+          <Textarea
+            value={form.description}
+            placeholder="Detalhes, observações…"
             onChange={(e) =>
               setForm((f) => ({ ...f, description: e.target.value }))
             }
@@ -361,9 +456,23 @@ export function TransactionDialog({
         )}
 
         <div className="flex flex-col gap-2">
-          <span className="text-xs font-semibold tracking-wide text-muted uppercase">
-            Tags
-          </span>
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold tracking-wide text-muted uppercase">
+              Tags
+            </span>
+            <Link
+              href="/tags"
+              className="text-[11px] font-semibold text-brand hover:underline"
+            >
+              gerenciar tags
+            </Link>
+          </div>
+          {state.tags.length === 0 && (
+            <p className="text-xs text-muted">
+              Você ainda não tem tags. Crie uma em “nova tag” abaixo — depois
+              elas ficam disponíveis aqui para marcar ou desmarcar.
+            </p>
+          )}
           <div className="flex flex-wrap gap-2">
             {state.tags.map((tag) => {
               const active = form.tags.includes(tag.id);
@@ -455,36 +564,78 @@ export function TransactionDialog({
 
             {repeat.kind === "recurring" && (
               <div className="flex flex-col gap-3">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <Field label="Periodicidade">
-                    <Select value="1" disabled>
-                      <option value="1">Mensal</option>
-                    </Select>
-                  </Field>
-                  <Field label="Duração">
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <Field label="Frequência">
                     <Select
-                      value={repeat.indefinite ? "inf" : String(repeat.months)}
+                      value={repeat.unit}
                       onChange={(e) =>
-                        setRepeat((r) =>
-                          e.target.value === "inf"
-                            ? { ...r, indefinite: true }
-                            : {
-                                ...r,
-                                indefinite: false,
-                                months: Number(e.target.value),
-                              },
-                        )
+                        setRepeat((r) => ({
+                          ...r,
+                          unit: e.target.value as RepeatUnit,
+                        }))
                       }
                     >
-                      <option value="inf">Sem data para acabar</option>
-                      {[6, 12, 24, 36].map((m) => (
-                        <option key={m} value={m}>
-                          {m} meses
-                        </option>
-                      ))}
+                      <option value="day">Diária</option>
+                      <option value="week">Semanal</option>
+                      <option value="month">Mensal</option>
                     </Select>
                   </Field>
+                  <Field label="A cada">
+                    <div className="flex items-center gap-2">
+                      <Input
+                        type="number"
+                        min={1}
+                        max={30}
+                        value={repeat.interval}
+                        onChange={(e) =>
+                          setRepeat((r) => ({
+                            ...r,
+                            interval: Number(e.target.value) || 1,
+                          }))
+                        }
+                      />
+                      <span className="shrink-0 text-xs text-muted">
+                        {repeat.interval > 1
+                          ? UNIT_PLURALS[repeat.unit]
+                          : UNIT_LABELS[repeat.unit]}
+                      </span>
+                    </div>
+                  </Field>
+                  <Field label="Repetições">
+                    <Input
+                      type="number"
+                      min={2}
+                      max={400}
+                      disabled={repeat.indefinite}
+                      value={repeat.occurrences}
+                      onChange={(e) =>
+                        setRepeat((r) => ({
+                          ...r,
+                          occurrences: Number(e.target.value) || 2,
+                        }))
+                      }
+                    />
+                  </Field>
                 </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setRepeat((r) => ({ ...r, indefinite: !r.indefinite }))
+                  }
+                  className="flex w-fit items-center gap-2 text-xs font-semibold text-muted hover:text-ink"
+                >
+                  <span
+                    className={cx(
+                      "flex h-4 w-4 items-center justify-center rounded border",
+                      repeat.indefinite
+                        ? "border-brand bg-brand text-white"
+                        : "border-line",
+                    )}
+                  >
+                    {repeat.indefinite ? <Check className="h-3 w-3" /> : null}
+                  </span>
+                  Sem data para acabar
+                </button>
                 <p className="text-xs text-muted">{repeatPreview}</p>
               </div>
             )}
@@ -508,7 +659,7 @@ export function TransactionDialog({
       title="Excluir lançamento"
       description={
         pendingDelete
-          ? `${pendingDelete.description} · ${formatBRL(pendingDelete.amount)}`
+          ? `${pendingDelete.title || pendingDelete.description} · ${formatBRL(pendingDelete.amount)}`
           : undefined
       }
       footer={
@@ -571,7 +722,7 @@ export function TransactionDialog({
           <>
             Tem certeza que quer apagar{" "}
             <span className="font-semibold text-ink">
-              {pendingDelete?.description}
+              {pendingDelete?.title || pendingDelete?.description}
             </span>
             ? Essa ação não pode ser desfeita.
           </>

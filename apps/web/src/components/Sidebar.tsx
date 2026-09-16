@@ -6,6 +6,7 @@ import {
   CalendarCheck,
   ChartColumnBig,
   CreditCard,
+  PiggyBank,
   PlusCircle,
   Tags,
   TrendingUp,
@@ -18,6 +19,7 @@ import { cx } from "./ui";
 const NAV = [
   { href: "/saldos", label: "saldos", icon: Wallet },
   { href: "/totais", label: "totais", icon: ChartColumnBig },
+  { href: "/economias", label: "economias", icon: PiggyBank },
   { href: "/tags", label: "tags", icon: Tags },
   { href: "/cartoes", label: "cartões", icon: CreditCard },
   { href: "/horizonte", label: "horizonte", icon: TrendingUp },

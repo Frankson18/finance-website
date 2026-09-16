@@ -109,6 +109,21 @@ export function Select({
   );
 }
 
+export function Textarea({
+  className,
+  ...props
+}: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
+  return (
+    <textarea
+      {...props}
+      className={cx(
+        "min-h-20 w-full rounded-lg border border-line bg-raised px-3 py-2 text-sm text-ink placeholder:text-dim focus:border-brand/60 focus:outline-none focus:ring-2 focus:ring-brand/20",
+        className,
+      )}
+    />
+  );
+}
+
 export function Modal({
   open,
   onClose,

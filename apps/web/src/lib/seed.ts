@@ -1,5 +1,5 @@
 import { addMonths, format, startOfMonth } from "date-fns";
-import { AppState, Bucket, Card, Tag, Transaction } from "./types";
+import { AppState, Bucket, Card, Goal, Tag, Transaction } from "./types";
 
 export const TAG_COLORS = [
   "#3b82f6",
@@ -75,6 +75,23 @@ export function seedState(): AppState {
     { id: "tag_trabalho", name: "trabalho", color: "#14b8a6" },
   ];
 
+  const goals: Goal[] = [
+    {
+      id: "goal_reserva",
+      name: "Reserva de emergência",
+      target: 12000,
+      color: "#14b8a6",
+      createdAt: Date.now(),
+    },
+    {
+      id: "goal_viagem",
+      name: "Viagem",
+      target: 5000,
+      color: "#a855f7",
+      createdAt: Date.now(),
+    },
+  ];
+
   let seq = 0;
   const mk = (
     month: Date,
@@ -89,7 +106,8 @@ export function seedState(): AppState {
     date: dateIn(month, day),
     bucket,
     amount,
-    description,
+    title: description,
+    description: "",
     tags: tagIds,
     cardId,
     createdAt: Date.now() - seq * 1000,
@@ -140,7 +158,8 @@ export function seedState(): AppState {
         i === parcelas - 1
           ? Math.round((notebookTotal - per * (parcelas - 1)) * 100) / 100
           : per,
-      description: "Notebook",
+      title: "Notebook",
+      description: "Compra parcelada",
       tags: ["tag_trabalho"],
       cardId: "card_itau",
       createdAt: Date.now() - (300 + i) * 1000,
@@ -157,7 +176,8 @@ export function seedState(): AppState {
       date: dateIn(addMonths(lastMonth, i), 1),
       bucket: "entradas",
       amount: 800,
-      description: "Vale alimentação",
+      title: "Vale alimentação",
+      description: "Benefício mensal",
       tags: ["tag_essencial"],
       createdAt: Date.now() - (400 + i) * 1000,
       seriesId: "ser_vale",
@@ -167,10 +187,17 @@ export function seedState(): AppState {
     });
   }
 
+  for (const t of transactions) {
+    if (t.bucket === "economias" && t.title.startsWith("Reserva")) {
+      t.goalId = "goal_reserva";
+    }
+  }
+
   return {
     transactions,
     cards,
     tags,
+    goals,
     settings: {
       openingBalance: 5000,
       projectionMonths: 12,

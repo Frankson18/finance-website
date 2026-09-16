@@ -1,6 +1,6 @@
-import { addMonths } from "date-fns";
+import { addDays, addMonths, addWeeks } from "date-fns";
 import { parseDate, toISODate } from "./date";
-import { RepeatConfig, Transaction } from "./types";
+import { RepeatConfig, RepeatUnit, Transaction } from "./types";
 import { makeId } from "./seed";
 
 export type NewTransaction = Omit<Transaction, "id" | "createdAt">;
@@ -8,12 +8,42 @@ export type NewTransaction = Omit<Transaction, "id" | "createdAt">;
 export const DEFAULT_REPEAT: RepeatConfig = {
   kind: "none",
   installments: 2,
-  intervalMonths: 1,
-  months: 12,
+  unit: "month",
+  interval: 1,
+  occurrences: 12,
   indefinite: false,
 };
 
-const INDEFINITE_MONTHS = 24;
+export const UNIT_LABELS: Record<RepeatUnit, string> = {
+  day: "dia",
+  week: "semana",
+  month: "mês",
+};
+
+export const UNIT_ADVERBS: Record<RepeatUnit, string> = {
+  day: "diária",
+  week: "semanal",
+  month: "mensal",
+};
+
+export const UNIT_PLURALS: Record<RepeatUnit, string> = {
+  day: "dias",
+  week: "semanas",
+  month: "meses",
+};
+
+function addByUnit(date: Date, amount: number, unit: RepeatUnit): Date {
+  if (unit === "day") return addDays(date, amount);
+  if (unit === "week") return addWeeks(date, amount);
+  return addMonths(date, amount);
+}
+
+const MAX_OCCURRENCES = 400;
+
+function indefiniteTotal(unit: RepeatUnit, interval: number): number {
+  const base = unit === "day" ? 366 : unit === "week" ? 53 : 24;
+  return Math.max(2, Math.min(MAX_OCCURRENCES, Math.floor(base / Math.max(1, interval))));
+}
 
 export function buildSeries(
   input: NewTransaction,
@@ -40,13 +70,14 @@ export function buildSeries(
     }));
   }
 
+  const interval = Math.max(1, Math.round(repeat.interval) || 1);
   const total = repeat.indefinite
-    ? INDEFINITE_MONTHS
-    : Math.max(2, Math.min(60, Math.round(repeat.months)));
+    ? indefiniteTotal(repeat.unit, interval)
+    : Math.max(2, Math.min(MAX_OCCURRENCES, Math.round(repeat.occurrences)));
   return Array.from({ length: total }, (_, i) => ({
     ...input,
     amount: input.amount,
-    date: toISODate(addMonths(start, i * repeat.intervalMonths)),
+    date: toISODate(addByUnit(start, i * interval, repeat.unit)),
     seriesId,
     seriesKind: "recurring" as const,
     seriesIndex: i + 1,

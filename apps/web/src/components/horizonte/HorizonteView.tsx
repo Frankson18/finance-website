@@ -32,9 +32,26 @@ export function HorizonteView() {
   const { openTransactionDialog } = useUI();
   const today = todayISO();
 
-  const { projection, averages, currentBalance, minIndex } = useMemo(() => {
+  const {
+    projection,
+    averages,
+    currentBalance,
+    minIndex,
+    savedToday,
+    projectedEconomias,
+    savedEnd,
+  } = useMemo(() => {
     const now = startOfMonth(new Date());
+    const monthStartISO = toISODate(now);
     const history = monthRange(addMonths(now, -6), 6);
+
+    const econ = state.transactions.filter((t) => t.bucket === "economias");
+    const savedToday = econ
+      .filter((t) => t.date <= todayISO())
+      .reduce((a, t) => a + t.amount, 0);
+    const savedBefore = econ
+      .filter((t) => t.date < monthStartISO)
+      .reduce((a, t) => a + t.amount, 0);
 
     const histTotals = history
       .map((m) => sumTransactions(monthTransactions(state.transactions, monthKey(m))))
@@ -53,6 +70,7 @@ export function HorizonteView() {
 
     const futureMonths = monthRange(now, Math.max(1, state.settings.horizonMonths));
     let running = startOpening;
+    let savedRunning = savedBefore;
     const rows = futureMonths.map((m) => {
       const key = monthKey(m);
       const actual = sumTransactions(monthTransactions(state.transactions, key));
@@ -60,7 +78,16 @@ export function HorizonteView() {
       const totals = hasActual ? actual : averages;
       const net = netOf(totals);
       running += net;
-      return { date: m, key, totals, net, closing: running, hasActual };
+      savedRunning += totals.economias;
+      return {
+        date: m,
+        key,
+        totals,
+        net,
+        closing: running,
+        hasActual,
+        saved: savedRunning,
+      };
     });
 
     let minIndex = 0;
@@ -68,11 +95,19 @@ export function HorizonteView() {
       if (r.closing < rows[minIndex].closing) minIndex = i;
     });
 
+    const projectedEconomias = rows.reduce(
+      (a, r) => a + r.totals.economias,
+      0,
+    );
+
     return {
       projection: rows,
       averages,
       currentBalance: startOpening,
       minIndex,
+      savedToday,
+      projectedEconomias,
+      savedEnd: savedBefore + projectedEconomias,
     };
   }, [
     state.transactions,
@@ -127,6 +162,39 @@ export function HorizonteView() {
                 )}
               >
                 {min ? formatBRL(min.closing) : "—"}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-xl border border-line bg-panel p-4">
+              <p className="text-xs font-semibold text-muted uppercase">
+                Guardado hoje
+              </p>
+              <p
+                className="mt-1 text-xl font-bold tabular-nums"
+                style={{ color: BUCKET_COLORS.economias }}
+              >
+                {formatBRL(savedToday)}
+              </p>
+            </div>
+            <div className="rounded-xl border border-line bg-panel p-4">
+              <p className="text-xs font-semibold text-muted uppercase">
+                Economias projetadas ({state.settings.horizonMonths}m)
+              </p>
+              <p className="mt-1 text-xl font-bold tabular-nums">
+                {formatBRL(projectedEconomias)}
+              </p>
+            </div>
+            <div className="rounded-xl border border-line bg-panel p-4">
+              <p className="text-xs font-semibold text-muted uppercase">
+                Guardado ao fim
+              </p>
+              <p
+                className="mt-1 text-xl font-bold tabular-nums"
+                style={{ color: BUCKET_COLORS.economias }}
+              >
+                {formatBRL(savedEnd)}
               </p>
             </div>
           </div>
@@ -192,7 +260,7 @@ export function HorizonteView() {
                 </p>
               </div>
               <div className="no-scrollbar overflow-x-auto">
-                <table className="w-full min-w-[520px] border-collapse text-sm">
+                <table className="w-full min-w-[640px] border-collapse text-sm">
                   <thead>
                     <tr className="border-b border-line text-left text-xs text-muted uppercase">
                       <th className="px-4 py-2 font-semibold">mês</th>
@@ -201,6 +269,12 @@ export function HorizonteView() {
                       </th>
                       <th className="px-3 py-2 text-right font-semibold">
                         saídas
+                      </th>
+                      <th className="px-3 py-2 text-right font-semibold">
+                        economias
+                      </th>
+                      <th className="px-3 py-2 text-right font-semibold">
+                        guardado
                       </th>
                       <th className="px-4 py-2 text-right font-semibold">
                         saldo
@@ -212,7 +286,6 @@ export function HorizonteView() {
                       const out =
                         r.totals.saidas +
                         r.totals.diarios +
-                        r.totals.economias +
                         r.totals.cartao;
                       return (
                         <tr
@@ -232,6 +305,15 @@ export function HorizonteView() {
                           </td>
                           <td className="px-3 py-2 text-right tabular-nums text-red">
                             {formatBRL(out)}
+                          </td>
+                          <td
+                            className="px-3 py-2 text-right tabular-nums"
+                            style={{ color: BUCKET_COLORS.economias }}
+                          >
+                            {formatBRL(r.totals.economias)}
+                          </td>
+                          <td className="px-3 py-2 text-right tabular-nums text-muted">
+                            {formatBRL(r.saved)}
                           </td>
                           <td
                             className={cx(
@@ -282,8 +364,13 @@ export function HorizonteView() {
                       </span>
                       <span className="min-w-0 flex-1">
                         <span className="block truncate text-sm">
-                          {t.description}
+                          {t.title}
                         </span>
+                        {t.description ? (
+                          <span className="block truncate text-xs text-muted">
+                            {t.description}
+                          </span>
+                        ) : null}
                         <span className="text-xs text-muted">
                           {formatFullDate(t.date)} · {BUCKET_LABELS[t.bucket]}
                         </span>

@@ -51,3 +51,11 @@ export function initials(name: string): string {
     .map((p) => p[0]?.toUpperCase() ?? "")
     .join("");
 }
+
+export function plural(
+  count: number,
+  singular: string,
+  pluralForm: string,
+): string {
+  return count === 1 ? singular : pluralForm;
+}
