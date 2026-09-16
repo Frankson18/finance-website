@@ -415,7 +415,7 @@ function MonthGrid({
           },
         )}
 
-        <div className="flex h-[41px] w-full rounded-b-xl border-t border-ink/40">
+        <div className="sticky bottom-0 z-30 flex h-[41px] w-full rounded-b-xl border-t border-ink/40 bg-panel shadow-[0_-8px_14px_-10px_rgba(0,0,0,0.85)]">
           <div
             className="shrink-0 border-r border-line-soft"
             style={{ width: DAY_W }}
@@ -622,7 +622,7 @@ function MobileMonths({
             </div>
           );
         })}
-        <div className="flex items-center justify-between gap-3 px-3 py-3">
+        <div className="sticky bottom-0 z-10 flex items-center justify-between gap-3 border-t border-line-soft bg-panel px-3 py-3">
           <span className="text-xs font-bold text-muted">
             {column === "saldos"
               ? `saldo final de ${formatMonthLong(active.date)}`

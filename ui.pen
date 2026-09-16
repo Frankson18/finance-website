@@ -175898,7 +175898,7 @@
                       "name": "0 – 1.000 box",
                       "width": 96,
                       "height": 56,
-                      "fill": "#d97706",
+                      "fill": "#c0504d",
                       "cornerRadius": 10,
                       "stroke": "#ffffff26",
                       "strokeWidth": 1,
@@ -175911,7 +175911,7 @@
                           "id": "QvZvg",
                           "name": "0 – 1.000 hex",
                           "fill": "#ffffff",
-                          "content": "#d97706",
+                          "content": "#c0504d",
                           "fontFamily": "DM Sans",
                           "fontSize": 10,
                           "fontWeight": "700"
@@ -176874,6 +176874,42 @@
                       "name": "Nav label totais",
                       "fill": "#8b929d",
                       "content": "totais",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jeeyD",
+                  "name": "Nav economias",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "TzhQ8",
+                      "name": "Nav ic economias",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "piggy-bank",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "DjgpH",
+                      "name": "Nav label economias",
+                      "fill": "#8b929d",
+                      "content": "economias",
                       "fontFamily": "DM Sans",
                       "fontSize": 13,
                       "fontWeight": "700"
@@ -183492,6 +183528,42 @@
                 },
                 {
                   "type": "frame",
+                  "id": "f0op24",
+                  "name": "Nav economias",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "Ce5ec",
+                      "name": "Nav ic economias",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "piggy-bank",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "lvdQz",
+                      "name": "Nav label economias",
+                      "fill": "#8b929d",
+                      "content": "economias",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
                   "id": "XnojQ",
                   "name": "Nav tags",
                   "width": "fill_container",
@@ -185877,6 +185949,42 @@
                 },
                 {
                   "type": "frame",
+                  "id": "A9z25y",
+                  "name": "Nav economias",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "WsLLy",
+                      "name": "Nav ic economias",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "piggy-bank",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "qyJde",
+                      "name": "Nav label economias",
+                      "fill": "#8b929d",
+                      "content": "economias",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
                   "id": "G29q3A",
                   "name": "Nav tags",
                   "width": "fill_container",
@@ -187341,6 +187449,42 @@
                 },
                 {
                   "type": "frame",
+                  "id": "cKZAO",
+                  "name": "Nav economias",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "wxy8q",
+                      "name": "Nav ic economias",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "piggy-bank",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "hOP05",
+                      "name": "Nav label economias",
+                      "fill": "#8b929d",
+                      "content": "economias",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
                   "id": "Vj5nL",
                   "name": "Nav tags",
                   "width": "fill_container",
@@ -188551,6 +188695,42 @@
                 },
                 {
                   "type": "frame",
+                  "id": "KJARz",
+                  "name": "Nav economias",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "w0MLS",
+                      "name": "Nav ic economias",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "piggy-bank",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "bDLzZ",
+                      "name": "Nav label economias",
+                      "fill": "#8b929d",
+                      "content": "economias",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
                   "id": "jdvIz",
                   "name": "Nav tags",
                   "width": "fill_container",
@@ -189685,7 +189865,7 @@
       "id": "g1BOw",
       "x": 10019.5,
       "y": -540.5,
-      "name": "06 · Desktop — Ajustes",
+      "name": "06 · Desktop — Conta",
       "clip": true,
       "width": 1440,
       "height": 900,
@@ -189828,6 +190008,42 @@
                       "name": "Nav label totais",
                       "fill": "#8b929d",
                       "content": "totais",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qj8oh",
+                  "name": "Nav economias",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "w6XjgZ",
+                      "name": "Nav ic economias",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "piggy-bank",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fpGPV",
+                      "name": "Nav label economias",
+                      "fill": "#8b929d",
+                      "content": "economias",
                       "fontFamily": "DM Sans",
                       "fontSize": 13,
                       "fontWeight": "700"
@@ -190069,7 +190285,7 @@
                       "name": "Nav ic ajustes",
                       "width": 18,
                       "height": 18,
-                      "icon": "settings",
+                      "icon": "user",
                       "library": "lucide",
                       "fill": "#3b82f6"
                     },
@@ -190078,7 +190294,7 @@
                       "id": "I2IuJw",
                       "name": "Nav label ajustes",
                       "fill": "#3b82f6",
-                      "content": "ajustes",
+                      "content": "conta",
                       "fontFamily": "DM Sans",
                       "fontSize": 13,
                       "fontWeight": "700"
@@ -190127,7 +190343,7 @@
                       "id": "h4obz",
                       "name": "Title",
                       "fill": "#ededee",
-                      "content": "ajustes",
+                      "content": "conta",
                       "fontFamily": "DM Sans",
                       "fontSize": 20,
                       "fontWeight": "700"
@@ -190137,7 +190353,7 @@
                       "id": "E8WCuS",
                       "name": "Sub",
                       "fill": "#8b929d",
-                      "content": "configurações e dados",
+                      "content": "Sua conta e preferências",
                       "fontFamily": "DM Sans",
                       "fontSize": 12,
                       "fontWeight": "500"
@@ -190155,6 +190371,116 @@
               "height": "fill_container",
               "layout": "vertical",
               "children": [
+                {
+                  "type": "frame",
+                  "id": "Alu34",
+                  "name": "User card",
+                  "width": "fill_container",
+                  "height": 76,
+                  "cornerRadius": 12,
+                  "stroke": "#ffffff26",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 14,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "gHlYx",
+                      "name": "Avatar",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "#3b82f6",
+                      "cornerRadius": 999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MlDvw",
+                          "name": "Avatar t",
+                          "fill": "#ffffff",
+                          "content": "F",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 16,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "P85pI",
+                      "name": "User info",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 3,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ss7zk",
+                          "name": "User name",
+                          "fill": "#ededee",
+                          "content": "Fulano de Tal",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "v3KSO8",
+                          "name": "User email",
+                          "fill": "#8b929d",
+                          "content": "fulano@email.com",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "IhAnL",
+                      "name": "Sair btn",
+                      "height": 38,
+                      "cornerRadius": 8,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "EOPHj",
+                          "name": "Sair ic",
+                          "width": 15,
+                          "height": 15,
+                          "icon": "log-out",
+                          "library": "lucide",
+                          "fill": "#ededee"
+                        },
+                        {
+                          "type": "text",
+                          "id": "aqyqG",
+                          "name": "Sair t",
+                          "fill": "#ededee",
+                          "content": "Sair",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
                 {
                   "type": "frame",
                   "id": "J8FkDi",
@@ -200326,6 +200652,2865 @@
                       "content": "adicionar compra",
                       "fontFamily": "DM Sans",
                       "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "OsisB",
+      "x": 19459.5,
+      "y": -540.5,
+      "name": "19 · Desktop — Economias",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "#1d1f23",
+      "children": [
+        {
+          "type": "frame",
+          "id": "H3s14t",
+          "name": "Sidebar",
+          "width": 144,
+          "height": "fill_container",
+          "fill": "#1d1f23",
+          "stroke": "#ffffff26",
+          "strokeWidth": {
+            "right": 1
+          },
+          "strokeAlignment": "inner",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "bveOz",
+              "name": "Logo area",
+              "width": "fill_container",
+              "height": 56,
+              "gap": 8,
+              "padding": [
+                0,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "k2mCB",
+                  "name": "Logo mark",
+                  "width": 26,
+                  "height": 26,
+                  "fill": "#3b82f6",
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IK38w",
+                      "name": "Logo F",
+                      "fill": "#ffffff",
+                      "content": "F",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "xb7Kj",
+                  "name": "Logo text",
+                  "fill": "#ededee",
+                  "content": "Fluxo",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OJnVS",
+              "name": "Nav",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "padding": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "f4vpY",
+                  "name": "Nav saldos",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "Vo8R1",
+                      "name": "Nav ic saldos",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "wallet",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Qhuzj",
+                      "name": "Nav label saldos",
+                      "fill": "#8b929d",
+                      "content": "saldos",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "A7LiKy",
+                  "name": "Nav totais",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "UpjJd",
+                      "name": "Nav ic totais",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "trending-up",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "n2FwoJ",
+                      "name": "Nav label totais",
+                      "fill": "#8b929d",
+                      "content": "totais",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "KwQrr",
+                  "name": "Nav economias",
+                  "width": "fill_container",
+                  "height": 40,
+                  "fill": "#3b82f61f",
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "c7GSD",
+                      "name": "Nav ic economias",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "piggy-bank",
+                      "library": "lucide",
+                      "fill": "#3b82f6"
+                    },
+                    {
+                      "type": "text",
+                      "id": "GqOAH",
+                      "name": "Nav label economias",
+                      "fill": "#3b82f6",
+                      "content": "economias",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hUPa8",
+                  "name": "Nav tags",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "R26STM",
+                      "name": "Nav ic tags",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "tags",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "V8k8W1",
+                      "name": "Nav label tags",
+                      "fill": "#8b929d",
+                      "content": "tags",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fhehx",
+                  "name": "Nav cartões",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "R744Yf",
+                      "name": "Nav ic cartões",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "credit-card",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vU9p5",
+                      "name": "Nav label cartões",
+                      "fill": "#8b929d",
+                      "content": "cartões",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QHVOt",
+                  "name": "Nav horizonte",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "VabjZ",
+                      "name": "Nav ic horizonte",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "trending-up",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Y7JoFO",
+                      "name": "Nav label horizonte",
+                      "fill": "#8b929d",
+                      "content": "horizonte",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "N3uwpa",
+                  "name": "Divider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "#ffffff14"
+                },
+                {
+                  "type": "frame",
+                  "id": "o9eblH",
+                  "name": "Nav adicionar",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "PwtT3",
+                      "name": "Nav ic adicionar",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EhoRh",
+                      "name": "Nav label adicionar",
+                      "fill": "#8b929d",
+                      "content": "adicionar",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "L5vsSo",
+                  "name": "Nav ir pra hoje",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "aQaHg",
+                      "name": "Nav ic ir pra hoje",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "calendar-check",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "e6kzjb",
+                      "name": "Nav label ir pra hoje",
+                      "fill": "#8b929d",
+                      "content": "ir pra hoje",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "W0F4k",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": "fill_container"
+            },
+            {
+              "type": "frame",
+              "id": "DL4RG",
+              "name": "Bottom",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "padding": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bBFHw",
+                  "name": "Divider2",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "#ffffff14"
+                },
+                {
+                  "type": "frame",
+                  "id": "s8Nji7",
+                  "name": "Nav conta",
+                  "width": "fill_container",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "hWy9p",
+                      "name": "Nav ic conta",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "user",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ox7qv",
+                      "name": "Nav label conta",
+                      "fill": "#8b929d",
+                      "content": "conta",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "t6WgO",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "JEweW",
+              "name": "Topbar",
+              "width": "fill_container",
+              "height": 56,
+              "stroke": "#ffffff26",
+              "strokeWidth": {
+                "bottom": 1
+              },
+              "strokeAlignment": "inner",
+              "padding": [
+                0,
+                20
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "B1REo",
+                  "name": "Titles",
+                  "gap": 10,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "USMh8",
+                      "name": "Title",
+                      "fill": "#ededee",
+                      "content": "economias",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "r4rJKj",
+                      "name": "Sub",
+                      "fill": "#8b929d",
+                      "content": "Metas e valores guardados",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "FNyq8",
+                  "name": "Nova meta btn",
+                  "height": 34,
+                  "fill": "#3b82f6",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "Krnad",
+                      "name": "Nova meta ic",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "#ffffff"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TyX2p",
+                      "name": "Nova meta t",
+                      "fill": "#ffffff",
+                      "content": "nova meta",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n5pfLl",
+              "name": "Body",
+              "clip": true,
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VXpP6",
+                  "name": "KPIs",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NgFPp",
+                      "name": "KPI Total guardado",
+                      "width": "fill_container",
+                      "height": 88,
+                      "cornerRadius": 12,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "XxLt5",
+                          "name": "KPI lab Total guardado",
+                          "fill": "#8b929d",
+                          "content": "Total guardado",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700",
+                          "letterSpacing": 0.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "IO3GV",
+                          "name": "KPI val Total guardado",
+                          "fill": "#14b8a6",
+                          "content": "R$ 4.800,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 21,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "t7ru2",
+                      "name": "KPI Este mês",
+                      "width": "fill_container",
+                      "height": 88,
+                      "cornerRadius": 12,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "E6rmM",
+                          "name": "KPI lab Este mês",
+                          "fill": "#8b929d",
+                          "content": "Este mês",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700",
+                          "letterSpacing": 0.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "yuMlT",
+                          "name": "KPI val Este mês",
+                          "fill": "#ededee",
+                          "content": "R$ 800,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 21,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BYaM2",
+                      "name": "KPI Média mensal (12m)",
+                      "width": "fill_container",
+                      "height": 88,
+                      "cornerRadius": 12,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "smuFk",
+                          "name": "KPI lab Média mensal (12m)",
+                          "fill": "#8b929d",
+                          "content": "Média mensal (12m)",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700",
+                          "letterSpacing": 0.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "uncjA",
+                          "name": "KPI val Média mensal (12m)",
+                          "fill": "#ededee",
+                          "content": "R$ 400,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 21,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "KzmPV",
+                  "name": "Metas head",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "W6Ob4",
+                      "name": "Metas ic",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "piggy-bank",
+                      "library": "lucide",
+                      "fill": "#14b8a6"
+                    },
+                    {
+                      "type": "text",
+                      "id": "bDVuk",
+                      "name": "Metas t",
+                      "fill": "#ededee",
+                      "content": "Metas",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "DyZPH",
+                  "name": "Goals",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "T4n17",
+                      "name": "Goal Reserva de emergência",
+                      "width": "fill_container",
+                      "cornerRadius": 12,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "z1QlFE",
+                          "name": "Goal top Reserva de emergência",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "zlqIP",
+                              "name": "Goal lft Reserva de emergência",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "LP5H8",
+                                  "name": "Goal dot Reserva de emergência",
+                                  "width": 12,
+                                  "height": 12,
+                                  "fill": "#14b8a6",
+                                  "cornerRadius": 999
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "HU8E3",
+                                  "name": "Goal name Reserva de emergência",
+                                  "fill": "#ededee",
+                                  "content": "Reserva de emergência",
+                                  "fontFamily": "DM Sans",
+                                  "fontSize": 14,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "wmfBJ",
+                              "name": "Goal pen Reserva de emergência",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "pencil",
+                              "library": "lucide",
+                              "fill": "#8b929d"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "OPYdX",
+                          "name": "Goal val Reserva de emergência",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "end",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Q4I8dD",
+                              "name": "Goal saved Reserva de emergência",
+                              "fill": "#ededee",
+                              "content": "R$ 3.500,00",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "TkkuS",
+                              "name": "Goal target Reserva de emergência",
+                              "fill": "#8b929d",
+                              "content": "de R$ 12.000,00",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "k9YY7",
+                          "name": "Goal prog Reserva de emergência",
+                          "width": "fill_container",
+                          "height": 8,
+                          "fill": "#2b2e34",
+                          "cornerRadius": 999,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "A5AvZc",
+                              "name": "Goal fill Reserva de emergência",
+                              "width": 104,
+                              "height": 8,
+                              "fill": "#14b8a6",
+                              "cornerRadius": 999
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "crPIV",
+                          "name": "Goal pct Reserva de emergência",
+                          "fill": "#8b929d",
+                          "content": "29% concluído",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "w9Z1O",
+                          "name": "Goal add Reserva de emergência",
+                          "width": "fill_container",
+                          "height": 38,
+                          "fill": "#3b82f6",
+                          "cornerRadius": 8,
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "LLsLp",
+                              "name": "Goal add ic Reserva de emergência",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "plus",
+                              "library": "lucide",
+                              "fill": "#ffffff"
+                            },
+                            {
+                              "type": "text",
+                              "id": "WmqsX",
+                              "name": "Goal add t Reserva de emergência",
+                              "fill": "#ffffff",
+                              "content": "adicionar valor",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "w9RXwp",
+                      "name": "Goal Viagem",
+                      "width": "fill_container",
+                      "cornerRadius": 12,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "VWEym",
+                          "name": "Goal top Viagem",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Bwgjs",
+                              "name": "Goal lft Viagem",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "HTgdA",
+                                  "name": "Goal dot Viagem",
+                                  "width": 12,
+                                  "height": 12,
+                                  "fill": "#a855f7",
+                                  "cornerRadius": 999
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "fAAf8",
+                                  "name": "Goal name Viagem",
+                                  "fill": "#ededee",
+                                  "content": "Viagem",
+                                  "fontFamily": "DM Sans",
+                                  "fontSize": 14,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "zJJDM",
+                              "name": "Goal pen Viagem",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "pencil",
+                              "library": "lucide",
+                              "fill": "#8b929d"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "O9uEpr",
+                          "name": "Goal val Viagem",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "end",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "XuPfn",
+                              "name": "Goal saved Viagem",
+                              "fill": "#ededee",
+                              "content": "R$ 1.300,00",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "h9Dti",
+                              "name": "Goal target Viagem",
+                              "fill": "#8b929d",
+                              "content": "de R$ 5.000,00",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Lqn5b",
+                          "name": "Goal prog Viagem",
+                          "width": "fill_container",
+                          "height": 8,
+                          "fill": "#2b2e34",
+                          "cornerRadius": 999,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "m0kKCF",
+                              "name": "Goal fill Viagem",
+                              "width": 94,
+                              "height": 8,
+                              "fill": "#a855f7",
+                              "cornerRadius": 999
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "G1cNN",
+                          "name": "Goal pct Viagem",
+                          "fill": "#8b929d",
+                          "content": "26% concluído",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "wVcn9",
+                          "name": "Goal add Viagem",
+                          "width": "fill_container",
+                          "height": 38,
+                          "fill": "#3b82f6",
+                          "cornerRadius": 8,
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "X3jlD",
+                              "name": "Goal add ic Viagem",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "plus",
+                              "library": "lucide",
+                              "fill": "#ffffff"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ZYUV3",
+                              "name": "Goal add t Viagem",
+                              "fill": "#ffffff",
+                              "content": "adicionar valor",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SqjGU",
+                  "name": "Sem meta",
+                  "width": "fill_container",
+                  "height": 64,
+                  "cornerRadius": 12,
+                  "stroke": "#ffffff26",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "l6J45w",
+                      "name": "Sem meta txt",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ffr8Q",
+                          "name": "Sem meta t",
+                          "fill": "#ededee",
+                          "content": "Sem meta",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "GHQp6",
+                          "name": "Sem meta d",
+                          "fill": "#8b929d",
+                          "content": "Economias que não estão vinculadas a nenhuma meta.",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "iARqF",
+                      "name": "Sem meta val",
+                      "fill": "#ededee",
+                      "content": "R$ 0,00",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j4suQ",
+                  "name": "Por mes",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "cornerRadius": 12,
+                  "stroke": "#ffffff26",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "N5gdSQ",
+                      "name": "Por mes t",
+                      "fill": "#ededee",
+                      "content": "Por mês",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "W7mWA",
+                      "name": "Mes jun/2026",
+                      "width": "fill_container",
+                      "height": 34,
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "TWFcX",
+                          "name": "Mes lbl jun/2026",
+                          "fill": "#8b929d",
+                          "content": "jun/2026",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "JCROn",
+                          "name": "Mes bar jun/2026",
+                          "width": 260,
+                          "height": 8,
+                          "fill": "#2b2e34",
+                          "cornerRadius": 999,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "s8ARL",
+                              "name": "Mes fill jun/2026",
+                              "width": 130,
+                              "height": 8,
+                              "fill": "#14b8a6",
+                              "cornerRadius": 999
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "M0I1hQ",
+                          "name": "Mes spacer jun/2026",
+                          "width": "fill_container",
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "QQmgp",
+                          "name": "Mes val jun/2026",
+                          "fill": "#ededee",
+                          "content": "R$ 500,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "y17Jwn",
+                          "name": "Mes acc jun/2026",
+                          "fill": "#8b929d",
+                          "content": "guardado R$ 1.500,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "P8vGFb",
+                      "name": "Mes jul/2026",
+                      "width": "fill_container",
+                      "height": 34,
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "a8b1TI",
+                          "name": "Mes lbl jul/2026",
+                          "fill": "#8b929d",
+                          "content": "jul/2026",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "pkJx5",
+                          "name": "Mes bar jul/2026",
+                          "width": 260,
+                          "height": 8,
+                          "fill": "#2b2e34",
+                          "cornerRadius": 999,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "z0kGCG",
+                              "name": "Mes fill jul/2026",
+                              "width": 130,
+                              "height": 8,
+                              "fill": "#14b8a6",
+                              "cornerRadius": 999
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "y8dHI",
+                          "name": "Mes spacer jul/2026",
+                          "width": "fill_container",
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "yzmZY",
+                          "name": "Mes val jul/2026",
+                          "fill": "#ededee",
+                          "content": "R$ 500,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "g3JESD",
+                          "name": "Mes acc jul/2026",
+                          "fill": "#8b929d",
+                          "content": "guardado R$ 2.000,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "K9tCQ",
+                      "name": "Mes ago/2026",
+                      "width": "fill_container",
+                      "height": 34,
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "l3K6i",
+                          "name": "Mes lbl ago/2026",
+                          "fill": "#8b929d",
+                          "content": "ago/2026",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "R61eN",
+                          "name": "Mes bar ago/2026",
+                          "width": 260,
+                          "height": 8,
+                          "fill": "#2b2e34",
+                          "cornerRadius": 999,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "O2EZql",
+                              "name": "Mes fill ago/2026",
+                              "width": 130,
+                              "height": 8,
+                              "fill": "#14b8a6",
+                              "cornerRadius": 999
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "z8CPd",
+                          "name": "Mes spacer ago/2026",
+                          "width": "fill_container",
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "erIoH",
+                          "name": "Mes val ago/2026",
+                          "fill": "#ededee",
+                          "content": "R$ 500,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "yujDC",
+                          "name": "Mes acc ago/2026",
+                          "fill": "#8b929d",
+                          "content": "guardado R$ 2.500,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "P4x3Sa",
+                      "name": "Mes set/2026",
+                      "width": "fill_container",
+                      "height": 34,
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "y12Xj",
+                          "name": "Mes lbl set/2026",
+                          "fill": "#8b929d",
+                          "content": "set/2026",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "WFhKH",
+                          "name": "Mes bar set/2026",
+                          "width": 260,
+                          "height": 8,
+                          "fill": "#2b2e34",
+                          "cornerRadius": 999,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "l5Ee4f",
+                              "name": "Mes fill set/2026",
+                              "width": 200,
+                              "height": 8,
+                              "fill": "#14b8a6",
+                              "cornerRadius": 999
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "hComv",
+                          "name": "Mes spacer set/2026",
+                          "width": "fill_container",
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "Zb8rz",
+                          "name": "Mes val set/2026",
+                          "fill": "#ededee",
+                          "content": "R$ 800,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "DHrnH",
+                          "name": "Mes acc set/2026",
+                          "fill": "#8b929d",
+                          "content": "guardado R$ 3.300,00",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "jvsQ9",
+      "x": 20979.5,
+      "y": -540.5,
+      "name": "20 · Mobile — Economias",
+      "clip": true,
+      "width": 390,
+      "height": 844,
+      "fill": "#1d1f23",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "mWepq",
+          "name": "Top bar",
+          "width": "fill_container",
+          "height": 56,
+          "stroke": "#ffffff26",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "strokeAlignment": "inner",
+          "padding": [
+            0,
+            12
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "jMn3W",
+              "name": "Left",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "K1ocMU",
+                  "name": "Menu",
+                  "width": 22,
+                  "height": 22,
+                  "icon": "menu",
+                  "library": "lucide",
+                  "fill": "#ededee"
+                },
+                {
+                  "type": "frame",
+                  "id": "NtDGj",
+                  "name": "Logo",
+                  "width": 28,
+                  "height": 28,
+                  "fill": "#3b82f6",
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RjHPU",
+                      "name": "Logo F",
+                      "fill": "#ffffff",
+                      "content": "F",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "DMuyd",
+                  "name": "Brand",
+                  "fill": "#ededee",
+                  "content": "Fluxo",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 15,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Z6WaWV",
+              "name": "Add",
+              "width": 36,
+              "height": 36,
+              "fill": "#3b82f6",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Cn6cr",
+                  "name": "Add ic",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "plus",
+                  "library": "lucide",
+                  "fill": "#ffffff"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pFVnJ",
+          "name": "Page header",
+          "width": "fill_container",
+          "height": 54,
+          "stroke": "#ffffff26",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "strokeAlignment": "inner",
+          "padding": [
+            0,
+            12
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "RkYbM",
+              "name": "Page title",
+              "fill": "#ededee",
+              "content": "economias",
+              "fontFamily": "DM Sans",
+              "fontSize": 18,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "UCMCi",
+              "name": "Page action",
+              "fill": "#3b82f6",
+              "content": "nova meta",
+              "fontFamily": "DM Sans",
+              "fontSize": 13,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "g0Zmcx",
+          "name": "Body",
+          "clip": true,
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "JXhHs",
+              "name": "KPI Total guardado",
+              "width": "fill_container",
+              "height": 64,
+              "cornerRadius": 12,
+              "stroke": "#ffffff26",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "padding": [
+                0,
+                14
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gedK0",
+                  "name": "KPI lab Total guardado",
+                  "fill": "#8b929d",
+                  "content": "Total guardado",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.3
+                },
+                {
+                  "type": "text",
+                  "id": "b16T3",
+                  "name": "KPI val Total guardado",
+                  "fill": "#14b8a6",
+                  "content": "R$ 4.800,00",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zDg5a",
+              "name": "KPI Este mês",
+              "width": "fill_container",
+              "height": 64,
+              "cornerRadius": 12,
+              "stroke": "#ffffff26",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "padding": [
+                0,
+                14
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bzGLa",
+                  "name": "KPI lab Este mês",
+                  "fill": "#8b929d",
+                  "content": "Este mês",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.3
+                },
+                {
+                  "type": "text",
+                  "id": "KVw2m",
+                  "name": "KPI val Este mês",
+                  "fill": "#ededee",
+                  "content": "R$ 800,00",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wJlz2",
+              "name": "KPI Média mensal (12m)",
+              "width": "fill_container",
+              "height": 64,
+              "cornerRadius": 12,
+              "stroke": "#ffffff26",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "padding": [
+                0,
+                14
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "m4jqH",
+                  "name": "KPI lab Média mensal (12m)",
+                  "fill": "#8b929d",
+                  "content": "Média mensal (12m)",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.3
+                },
+                {
+                  "type": "text",
+                  "id": "sBjiH",
+                  "name": "KPI val Média mensal (12m)",
+                  "fill": "#ededee",
+                  "content": "R$ 400,00",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "ha6cj",
+              "name": "Metas t",
+              "fill": "#ededee",
+              "content": "Metas",
+              "fontFamily": "DM Sans",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "YTl7D",
+              "name": "Goal Reserva de emergência",
+              "width": "fill_container",
+              "cornerRadius": 12,
+              "stroke": "#ffffff26",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Jk0O1",
+                  "name": "Goal top Reserva de emergência",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "TrZvM",
+                      "name": "Goal lft Reserva de emergência",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "y2Y04",
+                          "name": "Goal dot Reserva de emergência",
+                          "width": 10,
+                          "height": 10,
+                          "fill": "#14b8a6",
+                          "cornerRadius": 999
+                        },
+                        {
+                          "type": "text",
+                          "id": "CM1tk",
+                          "name": "Goal name Reserva de emergência",
+                          "fill": "#ededee",
+                          "content": "Reserva de emergência",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "icon",
+                      "id": "UrRKv",
+                      "name": "Goal pen Reserva de emergência",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "pencil",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Jmvge",
+                  "name": "Goal val Reserva de emergência",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wE6Hx",
+                      "name": "Goal saved Reserva de emergência",
+                      "fill": "#ededee",
+                      "content": "R$ 3.500,00",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 16,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CwXOw",
+                      "name": "Goal target Reserva de emergência",
+                      "fill": "#8b929d",
+                      "content": "de R$ 12.000,00",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "k1dD7h",
+                  "name": "Goal prog Reserva de emergência",
+                  "width": "fill_container",
+                  "height": 8,
+                  "fill": "#2b2e34",
+                  "cornerRadius": 999,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "hzJUg",
+                      "name": "Goal fill Reserva de emergência",
+                      "width": 87,
+                      "height": 8,
+                      "fill": "#14b8a6",
+                      "cornerRadius": 999
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "H4led2",
+                  "name": "Goal add Reserva de emergência",
+                  "width": "fill_container",
+                  "height": 38,
+                  "fill": "#3b82f6",
+                  "cornerRadius": 8,
+                  "gap": 6,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "lpswc",
+                      "name": "Goal add ic Reserva de emergência",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "#ffffff"
+                    },
+                    {
+                      "type": "text",
+                      "id": "f7Wdh",
+                      "name": "Goal add t Reserva de emergência",
+                      "fill": "#ffffff",
+                      "content": "adicionar valor",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "woBLQ",
+              "name": "Goal Viagem",
+              "width": "fill_container",
+              "cornerRadius": 12,
+              "stroke": "#ffffff26",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VI0lw",
+                  "name": "Goal top Viagem",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "SNE9i",
+                      "name": "Goal lft Viagem",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "MNXUQ",
+                          "name": "Goal dot Viagem",
+                          "width": 10,
+                          "height": 10,
+                          "fill": "#a855f7",
+                          "cornerRadius": 999
+                        },
+                        {
+                          "type": "text",
+                          "id": "B9BaS",
+                          "name": "Goal name Viagem",
+                          "fill": "#ededee",
+                          "content": "Viagem",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "icon",
+                      "id": "psvzJ",
+                      "name": "Goal pen Viagem",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "pencil",
+                      "library": "lucide",
+                      "fill": "#8b929d"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WVSCd",
+                  "name": "Goal val Viagem",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "eTSk9",
+                      "name": "Goal saved Viagem",
+                      "fill": "#ededee",
+                      "content": "R$ 1.300,00",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 16,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TZoJN",
+                      "name": "Goal target Viagem",
+                      "fill": "#8b929d",
+                      "content": "de R$ 5.000,00",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "k5nEm",
+                  "name": "Goal prog Viagem",
+                  "width": "fill_container",
+                  "height": 8,
+                  "fill": "#2b2e34",
+                  "cornerRadius": 999,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "E7M7l",
+                      "name": "Goal fill Viagem",
+                      "width": 78,
+                      "height": 8,
+                      "fill": "#a855f7",
+                      "cornerRadius": 999
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aDYxZ",
+                  "name": "Goal add Viagem",
+                  "width": "fill_container",
+                  "height": 38,
+                  "fill": "#3b82f6",
+                  "cornerRadius": 8,
+                  "gap": 6,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "T2ZqIh",
+                      "name": "Goal add ic Viagem",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "#ffffff"
+                    },
+                    {
+                      "type": "text",
+                      "id": "AFABj",
+                      "name": "Goal add t Viagem",
+                      "fill": "#ffffff",
+                      "content": "adicionar valor",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "KlQsq",
+      "x": 21509.5,
+      "y": -540.5,
+      "name": "21 · Dialog — Nova movimentação v2",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "#000000a6",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "pNZn2",
+          "name": "Modal tx v2",
+          "clip": true,
+          "width": 560,
+          "fill": "#1d1f23",
+          "cornerRadius": 16,
+          "stroke": "#ffffff26",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "I5TRwD",
+              "name": "Head",
+              "width": "fill_container",
+              "height": 64,
+              "stroke": "#ffffff14",
+              "strokeWidth": {
+                "bottom": 1
+              },
+              "strokeAlignment": "inner",
+              "padding": [
+                0,
+                20
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "m4sN0f",
+                  "name": "Titles",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "d0h9F0",
+                      "name": "Title",
+                      "fill": "#ededee",
+                      "content": "Nova movimentação",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 16,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "r3JCr",
+                      "name": "Sub",
+                      "fill": "#8b929d",
+                      "content": "saídas · 16 de setembro de 2026",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "D7JYB",
+                  "name": "Close",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "x",
+                  "library": "lucide",
+                  "fill": "#8b929d"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LJ7I4",
+              "name": "Body",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bFk5Y",
+                  "name": "Bucket seg",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "PrNNq",
+                      "name": "Seg entradas",
+                      "width": "fill_container",
+                      "height": 56,
+                      "cornerRadius": 10,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BxQCA",
+                          "name": "Seg t entradas",
+                          "fill": "#8b929d",
+                          "content": "entradas",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "NJkU4",
+                      "name": "Seg saídas",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "#e5484d",
+                      "cornerRadius": 10,
+                      "layout": "vertical",
+                      "gap": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "uFF0C",
+                          "name": "Seg t saídas",
+                          "fill": "#ffffff",
+                          "content": "saídas",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ReLAS",
+                      "name": "Seg diários",
+                      "width": "fill_container",
+                      "height": 56,
+                      "cornerRadius": 10,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "h60IW",
+                          "name": "Seg t diários",
+                          "fill": "#8b929d",
+                          "content": "diários",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "z8s9LE",
+                      "name": "Seg economias",
+                      "width": "fill_container",
+                      "height": 56,
+                      "cornerRadius": 10,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "g1jQL",
+                          "name": "Seg t economias",
+                          "fill": "#8b929d",
+                          "content": "economias",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "moAaw",
+                      "name": "Seg cartão",
+                      "width": "fill_container",
+                      "height": 56,
+                      "cornerRadius": 10,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "D8oUTd",
+                          "name": "Seg t cartão",
+                          "fill": "#8b929d",
+                          "content": "cartão",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "z9VDt4",
+                  "name": "Valor data",
+                  "width": "fill_container",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "k4vCFb",
+                      "name": "Field valor",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sRQsG",
+                          "name": "Lab valor",
+                          "fill": "#8b929d",
+                          "content": "VALOR",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Z2bSmo",
+                          "name": "Valor box",
+                          "width": "fill_container",
+                          "height": 42,
+                          "fill": "#262a30",
+                          "cornerRadius": 8,
+                          "stroke": "#3b82f6",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "padding": [
+                            0,
+                            12
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "zjvTy",
+                              "name": "Valor cur",
+                              "fill": "#8b929d",
+                              "content": "R$",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "chKjr",
+                              "name": "Valor txt",
+                              "fill": "#ededee",
+                              "content": "3.500,00",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PN1Ez",
+                      "name": "Field data",
+                      "width": 200,
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "QmgQO",
+                          "name": "Lab data",
+                          "fill": "#8b929d",
+                          "content": "DATA",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "C4yIuu",
+                          "name": "Data box",
+                          "width": "fill_container",
+                          "height": 42,
+                          "fill": "#262a30",
+                          "cornerRadius": 8,
+                          "stroke": "#ffffff26",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "padding": [
+                            0,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "weM7R",
+                              "name": "Data txt",
+                              "fill": "#ededee",
+                              "content": "16/09/2026",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yNxla",
+                  "name": "Field titulo",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RYy4Q",
+                      "name": "Lab titulo",
+                      "fill": "#8b929d",
+                      "content": "TÍTULO",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 11,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wDFfC",
+                      "name": "Titulo box",
+                      "width": "fill_container",
+                      "height": 42,
+                      "fill": "#262a30",
+                      "cornerRadius": 8,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "JPROs",
+                          "name": "Titulo txt",
+                          "fill": "#ededee",
+                          "content": "Aluguel",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hZGTZ",
+                  "name": "Field desc",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kkLfQ",
+                      "name": "Lab desc",
+                      "fill": "#8b929d",
+                      "content": "DESCRIÇÃO (OPCIONAL)",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 11,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "LOTdg",
+                      "name": "Desc box",
+                      "width": "fill_container",
+                      "height": 64,
+                      "fill": "#262a30",
+                      "cornerRadius": 8,
+                      "stroke": "#ffffff26",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "pALvI",
+                          "name": "Desc ph",
+                          "fill": "#484d57",
+                          "content": "Detalhes, observações…",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iYByw",
+                  "name": "Field rep",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "q6cBb",
+                      "name": "Lab rep",
+                      "fill": "#8b929d",
+                      "content": "REPETIÇÃO",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 11,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AW8VX",
+                      "name": "Rep seg",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "HhAWm",
+                          "name": "Rep Única",
+                          "width": "fill_container",
+                          "height": 38,
+                          "cornerRadius": 10,
+                          "stroke": "#ffffff26",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "NpIph",
+                              "name": "Rep t Única",
+                              "fill": "#8b929d",
+                              "content": "Única",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "BaDdP",
+                          "name": "Rep Parcelado",
+                          "width": "fill_container",
+                          "height": 38,
+                          "cornerRadius": 10,
+                          "stroke": "#ffffff26",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "oq4CR",
+                              "name": "Rep t Parcelado",
+                              "fill": "#8b929d",
+                              "content": "Parcelado",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "K3GO6s",
+                          "name": "Rep Recorrente",
+                          "width": "fill_container",
+                          "height": 38,
+                          "fill": "#3b82f6",
+                          "cornerRadius": 10,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "L7TxT",
+                              "name": "Rep t Recorrente",
+                              "fill": "#ffffff",
+                              "content": "Recorrente",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zH7u3",
+                      "name": "Rec row",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "UrArT",
+                          "name": "F FREQUÊNCIA",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "XmdhK",
+                              "name": "F lab FREQUÊNCIA",
+                              "fill": "#8b929d",
+                              "content": "FREQUÊNCIA",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 10,
+                              "fontWeight": "700",
+                              "letterSpacing": 0.3
+                            },
+                            {
+                              "type": "frame",
+                              "id": "U956YZ",
+                              "name": "F box FREQUÊNCIA",
+                              "width": "fill_container",
+                              "height": 40,
+                              "fill": "#262a30",
+                              "cornerRadius": 8,
+                              "stroke": "#ffffff26",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "padding": [
+                                0,
+                                12
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "fZdDr",
+                                  "name": "F val FREQUÊNCIA",
+                                  "fill": "#ededee",
+                                  "content": "Semanal",
+                                  "fontFamily": "DM Sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "bAZrr",
+                          "name": "F A CADA",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "p5oym",
+                              "name": "F lab A CADA",
+                              "fill": "#8b929d",
+                              "content": "A CADA",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 10,
+                              "fontWeight": "700",
+                              "letterSpacing": 0.3
+                            },
+                            {
+                              "type": "frame",
+                              "id": "u0Rs6s",
+                              "name": "F box A CADA",
+                              "width": "fill_container",
+                              "height": 40,
+                              "fill": "#262a30",
+                              "cornerRadius": 8,
+                              "stroke": "#ffffff26",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "padding": [
+                                0,
+                                12
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "sD4dU",
+                                  "name": "F val A CADA",
+                                  "fill": "#ededee",
+                                  "content": "2 semanas",
+                                  "fontFamily": "DM Sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "gprea",
+                          "name": "F REPETIÇÕES",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "WnK43",
+                              "name": "F lab REPETIÇÕES",
+                              "fill": "#8b929d",
+                              "content": "REPETIÇÕES",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 10,
+                              "fontWeight": "700",
+                              "letterSpacing": 0.3
+                            },
+                            {
+                              "type": "frame",
+                              "id": "AddCV",
+                              "name": "F box REPETIÇÕES",
+                              "width": "fill_container",
+                              "height": 40,
+                              "fill": "#262a30",
+                              "cornerRadius": 8,
+                              "stroke": "#ffffff26",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "padding": [
+                                0,
+                                12
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "yD0W1",
+                                  "name": "F val REPETIÇÕES",
+                                  "fill": "#ededee",
+                                  "content": "12",
+                                  "fontFamily": "DM Sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XQsgm",
+                      "name": "Check",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "sJPy9",
+                          "name": "Check box",
+                          "width": 16,
+                          "height": 16,
+                          "cornerRadius": 4,
+                          "stroke": "#ffffff26",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner"
+                        },
+                        {
+                          "type": "text",
+                          "id": "VOj1D",
+                          "name": "Check t",
+                          "fill": "#8b929d",
+                          "content": "Sem data para acabar",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "ReCge",
+                      "name": "Rep preview",
+                      "fill": "#8b929d",
+                      "content": "a cada 2 semanas, 12 vezes · R$ 3.500,00 por lançamento",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xnOhg",
+              "name": "Foot",
+              "width": "fill_container",
+              "height": 68,
+              "stroke": "#ffffff14",
+              "strokeWidth": {
+                "top": 1
+              },
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                0,
+                20
+              ],
+              "justifyContent": "end",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "N4WqBd",
+                  "name": "Btn Cancelar",
+                  "height": 40,
+                  "fill": "#2b2e34",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X0ttfg",
+                      "name": "Btn t Cancelar",
+                      "fill": "#ededee",
+                      "content": "Cancelar",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NN8zc",
+                  "name": "Btn Salvar e adicionar outro",
+                  "height": 40,
+                  "cornerRadius": 8,
+                  "stroke": "#ffffff26",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "nMmGg",
+                      "name": "Btn ic Salvar e adicionar outro",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "#ededee"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uYiyN",
+                      "name": "Btn t Salvar e adicionar outro",
+                      "fill": "#ededee",
+                      "content": "Salvar e adicionar outro",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "k1TC3j",
+                  "name": "Btn Salvar",
+                  "height": 40,
+                  "fill": "#3b82f6",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "H2Qv2n",
+                      "name": "Btn ic Salvar",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "check",
+                      "library": "lucide",
+                      "fill": "#ffffff"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vCjOg",
+                      "name": "Btn t Salvar",
+                      "fill": "#ffffff",
+                      "content": "Salvar",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
                       "fontWeight": "700"
                     }
                   ]

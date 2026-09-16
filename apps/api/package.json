@@ -15,9 +15,11 @@
     "prisma:studio": "prisma studio"
   },
   "dependencies": {
+    "@fastify/cookie": "^11.1.2",
     "@fastify/cors": "^10.0.1",
     "@fastify/jwt": "^9.0.1",
     "@fastify/oauth2": "^8.1.0",
+    "@fastify/rate-limit": "^10.3.0",
     "@fluxo/shared": "*",
     "@prisma/client": "^6.2.1",
     "bcryptjs": "^2.4.3",

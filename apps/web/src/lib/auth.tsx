@@ -8,20 +8,25 @@ import {
   useMemo,
   useState,
 } from "react";
-import { AuthResponse, PublicUser } from "@fluxo/shared";
-import { api, clearToken, getToken, setToken, UNAUTHORIZED_EVENT } from "./api";
+import { PublicUser } from "@fluxo/shared";
+import { api, UNAUTHORIZED_EVENT } from "./api";
 
 interface AuthValue {
   user: PublicUser | null;
   ready: boolean;
-  providers: { google: boolean };
-  login: (email: string, password: string) => Promise<void>;
+  providers: { google: boolean; captcha: boolean };
+  login: (
+    email: string,
+    password: string,
+    captchaToken?: string,
+  ) => Promise<void>;
   register: (
     email: string,
     password: string,
     name?: string,
+    captchaToken?: string,
   ) => Promise<void>;
-  logout: () => void;
+  logout: () => Promise<void>;
   reload: () => Promise<void>;
 }
 
@@ -30,12 +35,15 @@ const AuthContext = createContext<AuthValue | null>(null);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<PublicUser | null>(null);
   const [ready, setReady] = useState(false);
-  const [providers, setProviders] = useState({ google: false });
+  const [providers, setProviders] = useState({
+    google: false,
+    captcha: false,
+  });
 
   useEffect(() => {
-    api<{ google: boolean }>("/api/auth/providers")
-      .then((p) => setProviders(p))
-      .catch(() => setProviders({ google: false }));
+    api<{ google: boolean; captcha: boolean }>("/api/auth/providers")
+      .then((p) => setProviders({ google: p.google, captcha: p.captcha }))
+      .catch(() => setProviders({ google: false, captcha: false }));
   }, []);
 
   useEffect(() => {
@@ -45,16 +53,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const reload = useCallback(async () => {
-    if (!getToken()) {
-      setUser(null);
-      setReady(true);
-      return;
-    }
     try {
       const res = await api<{ user: PublicUser }>("/api/auth/me");
       setUser(res.user);
     } catch {
-      clearToken();
       setUser(null);
     } finally {
       setReady(true);
@@ -65,29 +67,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     void reload();
   }, [reload]);
 
-  const login = useCallback(async (email: string, password: string) => {
-    const res = await api<AuthResponse>("/api/auth/login", {
-      method: "POST",
-      body: { email, password },
-    });
-    setToken(res.token);
-    setUser(res.user);
-  }, []);
-
-  const register = useCallback(
-    async (email: string, password: string, name?: string) => {
-      const res = await api<AuthResponse>("/api/auth/register", {
+  const login = useCallback(
+    async (email: string, password: string, captchaToken?: string) => {
+      const res = await api<{ user: PublicUser }>("/api/auth/login", {
         method: "POST",
-        body: { email, password, name },
+        body: { email, password, captchaToken },
       });
-      setToken(res.token);
       setUser(res.user);
     },
     [],
   );
 
-  const logout = useCallback(() => {
-    clearToken();
+  const register = useCallback(
+    async (
+      email: string,
+      password: string,
+      name?: string,
+      captchaToken?: string,
+    ) => {
+      await api("/api/auth/register", {
+        method: "POST",
+        body: { email, password, name, captchaToken },
+      });
+    },
+    [],
+  );
+
+  const logout = useCallback(async () => {
+    try {
+      await api("/api/auth/logout", { method: "POST" });
+    } catch {
+      /* ignore */
+    }
     setUser(null);
   }, []);
 

@@ -6,7 +6,7 @@ export interface SaldoLevel {
 
 export const SALDO_LEVELS: SaldoLevel[] = [
   { color: "#e5484d", label: "Negativo", range: "abaixo de R$ 0" },
-  { color: "#d97706", label: "Baixo", range: "R$ 0 a R$ 1.000" },
+  { color: "#c0504d", label: "Baixo", range: "R$ 0 a R$ 1.000" },
   { color: "#4fa03f", label: "Saudável", range: "R$ 1.000 a R$ 5.000" },
   { color: "#58b846", label: "Alto", range: "acima de R$ 5.000" },
 ];

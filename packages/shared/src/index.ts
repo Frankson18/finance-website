@@ -149,15 +149,45 @@ export const settingsInputSchema = z.object({
 });
 export type SettingsInput = z.infer<typeof settingsInputSchema>;
 
+export const emailSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .min(1, "Informe o e-mail")
+  .email("E-mail inválido");
+
+export const passwordSchema = z
+  .string()
+  .min(8, "Mínimo de 8 caracteres")
+  .max(100, "Máximo de 100 caracteres")
+  .regex(/[A-Za-z]/, "Inclua ao menos uma letra")
+  .regex(/[0-9]/, "Inclua ao menos um número");
+
+export interface PasswordRule {
+  key: string;
+  label: string;
+  test: (value: string) => boolean;
+}
+
+export const PASSWORD_RULES: PasswordRule[] = [
+  { key: "length", label: "Pelo menos 8 caracteres", test: (v) => v.length >= 8 },
+  { key: "letter", label: "Uma letra", test: (v) => /[A-Za-z]/.test(v) },
+  { key: "number", label: "Um número", test: (v) => /[0-9]/.test(v) },
+];
+
+export function passwordIsValid(value: string): boolean {
+  return PASSWORD_RULES.every((r) => r.test(value));
+}
+
 export const registerSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6).max(100),
-  name: z.string().min(1).max(80).optional(),
+  email: emailSchema,
+  password: passwordSchema,
+  name: z.string().trim().min(2, "Nome muito curto").max(80).optional(),
 });
 
 export const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(1).max(100),
+  email: emailSchema,
+  password: z.string().min(1, "Informe a senha").max(100),
 });
 
 export const DEFAULT_SETTINGS: Settings = {

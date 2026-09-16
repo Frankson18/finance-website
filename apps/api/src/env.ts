@@ -8,7 +8,26 @@ export const env = {
   webUrl: process.env.WEB_URL ?? "http://localhost:3000",
   googleClientId: process.env.GOOGLE_CLIENT_ID ?? "",
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+  pwnedCheck: process.env.PWNED_CHECK !== "false",
+  captchaSecret: process.env.CAPTCHA_SECRET ?? "",
+  isProd: process.env.NODE_ENV === "production",
 };
 
 export const googleEnabled =
   env.googleClientId.length > 0 && env.googleClientSecret.length > 0;
+
+export const captchaEnabled = env.captchaSecret.length > 0;
+
+export function assertProductionSecrets() {
+  if (!env.isProd) return;
+  const weak =
+    !env.jwtSecret ||
+    env.jwtSecret.length < 32 ||
+    env.jwtSecret.startsWith("dev-") ||
+    env.jwtSecret.includes("troque");
+  if (weak) {
+    throw new Error(
+      "JWT_SECRET fraco/ausente em produção. Defina um segredo longo e aleatório (ex.: openssl rand -base64 48).",
+    );
+  }
+}

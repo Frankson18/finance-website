@@ -251,7 +251,7 @@ export function HorizonteView() {
             </div>
           </section>
 
-          <div className="grid gap-5 lg:grid-cols-2">
+          <div className="flex flex-col gap-5">
             <section className="overflow-hidden rounded-xl border border-line bg-panel">
               <div className="border-b border-line-soft px-4 py-3">
                 <h2 className="text-sm font-bold">Projeção detalhada</h2>
@@ -276,7 +276,7 @@ export function HorizonteView() {
                       <th className="px-3 py-2 text-right font-semibold">
                         guardado
                       </th>
-                      <th className="px-4 py-2 text-right font-semibold">
+                      <th className="sticky right-0 border-l border-line-soft bg-panel px-4 py-2 text-right font-semibold">
                         saldo
                       </th>
                     </tr>
@@ -317,7 +317,7 @@ export function HorizonteView() {
                           </td>
                           <td
                             className={cx(
-                              "px-4 py-2 text-right font-semibold tabular-nums",
+                              "sticky right-0 border-l border-line-soft bg-panel px-4 py-2 text-right font-semibold tabular-nums",
                               r.closing >= 0 ? "text-ink" : "text-red",
                             )}
                           >
