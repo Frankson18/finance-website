@@ -1,11 +1,16 @@
 import "dotenv/config";
 
+const defaultOrigins = ["http://localhost:3000", "http://127.0.0.1:3000"];
+
 export const env = {
   databaseUrl: process.env.DATABASE_URL ?? "",
   jwtSecret: process.env.JWT_SECRET ?? "dev-fluxo-secret-change-me",
   port: Number(process.env.PORT ?? 3333),
   apiUrl: process.env.API_URL ?? "http://localhost:3333",
   webUrl: process.env.WEB_URL ?? "http://localhost:3000",
+  corsOrigins: process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(",").map((o) => o.trim())
+    : defaultOrigins,
   googleClientId: process.env.GOOGLE_CLIENT_ID ?? "",
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
   pwnedCheck: process.env.PWNED_CHECK !== "false",

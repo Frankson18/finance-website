@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans } from "next/font/google";
 import { AuthProvider } from "@/lib/auth";
+import { ThemeProvider } from "@/lib/appearance";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -21,13 +22,18 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const themeScript = `(function(){try{var t=localStorage.getItem('fluxo.theme');var d=(t==='light'||t==='dark')?t:(t==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):'dark');document.documentElement.dataset.theme=d;}catch(e){document.documentElement.dataset.theme='dark';}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={dmSans.variable}>
+    <html lang="pt-BR" className={dmSans.variable} suppressHydrationWarning>
       <body className="bg-bg font-sans text-ink antialiased">
-        <AuthProvider>{children}</AuthProvider>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <ThemeProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

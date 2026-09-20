@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, Plus, WifiOff, X } from "lucide-react";
+import { Menu, Plus, User, WifiOff, X } from "lucide-react";
 import { Sidebar, SidebarContent } from "./Sidebar";
 import { IconButton } from "./ui";
 import { useUI } from "./ui-context";
@@ -34,13 +34,22 @@ function MobileHeader({ onMenu }: { onMenu: () => void }) {
           <span className="text-sm font-black tracking-tight">Fluxo</span>
         </Link>
       </div>
-      <IconButton
-        variant="primary"
-        onClick={() => openTransactionDialog()}
-        aria-label="Nova movimentação"
-      >
-        <Plus className="h-5 w-5" />
-      </IconButton>
+      <div className="flex items-center gap-1">
+        <IconButton
+          variant="primary"
+          onClick={() => openTransactionDialog()}
+          aria-label="Nova movimentação"
+        >
+          <Plus className="h-5 w-5" />
+        </IconButton>
+        <Link
+          href="/conta"
+          aria-label="Minha conta"
+          className="flex h-9 w-9 items-center justify-center rounded-lg text-muted transition-colors hover:bg-raised hover:text-ink"
+        >
+          <User className="h-5 w-5" />
+        </Link>
+      </div>
     </header>
   );
 }
@@ -60,16 +69,18 @@ function Drawer({ open, onClose }: { open: boolean; onClose: () => void }) {
         onClick={onClose}
       />
       <div
-        className={`absolute inset-y-0 left-0 w-64 border-r border-line bg-panel transition-transform duration-200 ${
+        className={`absolute inset-y-0 left-0 flex w-64 flex-col border-r border-line bg-panel transition-transform duration-200 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex justify-end px-3 pt-3">
+        <div className="flex shrink-0 justify-end px-3 pt-3">
           <IconButton onClick={onClose} aria-label="Fechar menu">
             <X className="h-4 w-4" />
           </IconButton>
         </div>
-        <SidebarContent onNavigate={onClose} />
+        <div className="min-h-0 flex-1 overflow-y-auto">
+          <SidebarContent onNavigate={onClose} />
+        </div>
       </div>
     </div>
   );

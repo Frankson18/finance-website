@@ -1,16 +1,30 @@
 import type { FastifyInstance, FastifyReply } from "fastify";
-import bcrypt from "bcryptjs";
 import crypto from "node:crypto";
-import { loginSchema, registerSchema } from "@fluxo/shared";
+import {
+  loginSchema,
+  registerSchema,
+  setPasswordSchema,
+} from "@fluxo/shared";
 import { prisma } from "../db.js";
 import { env, googleEnabled, captchaEnabled } from "../env.js";
+import { hashPassword, needsRehash, verifyPassword } from "../password.js";
 import { AUTH_COOKIE, CSRF_COOKIE, SESSION_DAYS } from "../constants.js";
 
 const MAX_FAILED = 5;
 const LOCK_MINUTES = 15;
 
-function publicUser(user: { id: string; email: string; name: string | null }) {
-  return { id: user.id, email: user.email, name: user.name };
+function publicUser(user: {
+  id: string;
+  email: string;
+  name: string | null;
+  passwordHash: string | null;
+}) {
+  return {
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    hasPassword: Boolean(user.passwordHash),
+  };
 }
 
 function setSession(reply: FastifyReply, token: string) {
@@ -81,7 +95,7 @@ async function isPwned(password: string): Promise<boolean> {
 }
 
 export async function authRoutes(app: FastifyInstance) {
-  const dummyHash = await bcrypt.hash("fluxo-dummy-password", 12);
+  const dummyHash = await hashPassword("fluxo-dummy-password");
 
   app.get("/providers", async () => ({
     google: googleEnabled,
@@ -114,7 +128,7 @@ export async function authRoutes(app: FastifyInstance) {
         return reply.code(202).send({ ok: true });
       }
 
-      const passwordHash = await bcrypt.hash(password, 12);
+      const passwordHash = await hashPassword(password);
       try {
         await prisma.user.create({
           data: {
@@ -161,7 +175,7 @@ export async function authRoutes(app: FastifyInstance) {
         return reply.code(429).send({ error: "locked", retryInSeconds });
       }
 
-      const ok = await bcrypt.compare(
+      const ok = await verifyPassword(
         password,
         user?.passwordHash ?? dummyHash,
       );
@@ -183,11 +197,16 @@ export async function authRoutes(app: FastifyInstance) {
         return reply.code(401).send({ error: "invalid_credentials" });
       }
 
-      if (user.failedLoginCount || user.lockedUntil) {
-        await prisma.user.update({
-          where: { id: user.id },
-          data: { failedLoginCount: 0, lockedUntil: null },
-        });
+      const patch: {
+        failedLoginCount: number;
+        lockedUntil: null;
+        passwordHash?: string;
+      } = { failedLoginCount: 0, lockedUntil: null };
+      if (needsRehash(user.passwordHash)) {
+        patch.passwordHash = await hashPassword(password);
+      }
+      if (user.failedLoginCount || user.lockedUntil || patch.passwordHash) {
+        await prisma.user.update({ where: { id: user.id }, data: patch });
       }
 
       const token = app.jwt.sign({ sub: user.id }, { expiresIn: "30d" });
@@ -212,6 +231,42 @@ export async function authRoutes(app: FastifyInstance) {
     clearSession(reply);
     return reply.send({ ok: true });
   });
+
+  app.post(
+    "/password",
+    { preHandler: [app.authenticate] },
+    async (request, reply) => {
+      const parsed = setPasswordSchema.safeParse(request.body);
+      if (!parsed.success) {
+        return reply
+          .code(400)
+          .send({ error: "invalid", issues: parsed.error.issues });
+      }
+      const { currentPassword, password } = parsed.data;
+      const user = await prisma.user.findUnique({
+        where: { id: request.user.sub },
+      });
+      if (!user) return reply.code(404).send({ error: "not_found" });
+
+      if (user.passwordHash) {
+        if (!currentPassword) {
+          return reply.code(400).send({ error: "current_required" });
+        }
+        const ok = await verifyPassword(currentPassword, user.passwordHash);
+        if (!ok) {
+          return reply.code(401).send({ error: "invalid_credentials" });
+        }
+      }
+      if (await isPwned(password)) {
+        return reply.code(400).send({ error: "pwned_password" });
+      }
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { passwordHash: await hashPassword(password) },
+      });
+      return reply.send({ ok: true });
+    },
+  );
 
   app.get("/google/callback", async (request, reply) => {
     const decorator = (

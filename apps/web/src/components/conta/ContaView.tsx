@@ -3,18 +3,24 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
+  Check,
   Database,
   Download,
   LogOut,
   RotateCcw,
+  Shield,
   Upload,
 } from "lucide-react";
+import { passwordIsValid, PASSWORD_RULES } from "@fluxo/shared";
 import { useStore } from "@/lib/store";
 import { useAuth } from "@/lib/auth";
+import { api } from "@/lib/api";
 import { AppState } from "@/lib/types";
 import { plural } from "@/lib/format";
 import { Button, Field, Input, cx } from "../ui";
 import { MoneyInput } from "../MoneyInput";
+import { PasswordInput } from "../PasswordInput";
+import { ThemeToggle } from "../ThemeToggle";
 import { PageBody, PageHeader } from "../PageHeader";
 
 export function ContaView() {
@@ -75,6 +81,17 @@ export function ContaView() {
               <LogOut className="h-4 w-4" /> Sair
             </Button>
           </section>
+
+          <section className="rounded-xl border border-line bg-panel p-5">
+            <h2 className="text-sm font-bold">Aparência</h2>
+            <p className="mt-1 mb-4 text-xs text-muted">
+              Escolha o tema da interface. “Sistema” segue a preferência do seu
+              dispositivo.
+            </p>
+            <ThemeToggle />
+          </section>
+
+          <PasswordCard />
 
           <section className="rounded-xl border border-line bg-panel p-5">
             <h2 className="text-sm font-bold">Saldo inicial</h2>
@@ -181,5 +198,127 @@ export function ContaView() {
         </div>
       </PageBody>
     </>
+  );
+}
+
+function PasswordCard() {
+  const { user } = useAuth();
+  const hasPassword = Boolean(user?.hasPassword);
+  const [current, setCurrent] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [msg, setMsg] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const valid =
+    passwordIsValid(password) &&
+    confirm === password &&
+    (!hasPassword || current.length > 0);
+
+  async function submit() {
+    if (!valid) return;
+    setError(null);
+    setMsg(null);
+    setLoading(true);
+    try {
+      await api("/api/auth/password", {
+        method: "POST",
+        body: {
+          currentPassword: hasPassword ? current : undefined,
+          password,
+        },
+      });
+      setMsg(hasPassword ? "Senha alterada." : "Senha definida.");
+      setCurrent("");
+      setPassword("");
+      setConfirm("");
+    } catch (err) {
+      const m = err instanceof Error ? err.message : "";
+      setError(
+        m === "pwned_password"
+          ? "Essa senha apareceu em vazamentos. Escolha outra."
+          : m === "invalid_credentials"
+            ? "Senha atual incorreta."
+            : m === "current_required"
+              ? "Informe a senha atual."
+              : "Não foi possível salvar. Verifique os requisitos.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <section className="rounded-xl border border-line bg-panel p-5">
+      <h2 className="flex items-center gap-2 text-sm font-bold">
+        <Shield className="h-4 w-4 text-brand" />{" "}
+        {hasPassword ? "Alterar senha" : "Definir senha"}
+      </h2>
+      <p className="mt-1 mb-4 text-xs text-muted">
+        {hasPassword
+          ? "Troque sua senha periodicamente."
+          : "Você entrou com o Google. Defina uma senha para entrar também por e-mail."}
+      </p>
+      <div className="flex max-w-md flex-col gap-4">
+        {hasPassword && (
+          <Field label="Senha atual">
+            <PasswordInput
+              value={current}
+              autoComplete="current-password"
+              onChange={(e) => setCurrent(e.target.value)}
+            />
+          </Field>
+        )}
+        <Field label={hasPassword ? "Nova senha" : "Senha"}>
+          <PasswordInput
+            value={password}
+            autoComplete="new-password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Field>
+        <ul className="flex flex-col gap-1">
+          {PASSWORD_RULES.map((r) => (
+            <li
+              key={r.key}
+              className={cx(
+                "flex items-center gap-1.5 text-xs",
+                r.test(password) ? "text-[#4fa03f]" : "text-muted",
+              )}
+            >
+              <Check className="h-3 w-3" /> {r.label}
+            </li>
+          ))}
+        </ul>
+        <Field
+          label="Repetir senha"
+          hint={
+            confirm.length > 0 && confirm !== password
+              ? "As senhas não conferem"
+              : undefined
+          }
+        >
+          <PasswordInput
+            value={confirm}
+            autoComplete="new-password"
+            onChange={(e) => setConfirm(e.target.value)}
+          />
+        </Field>
+        {error && (
+          <p className="rounded-lg border border-line-soft bg-red/10 px-3 py-2 text-xs text-red">
+            {error}
+          </p>
+        )}
+        {msg && (
+          <p className="rounded-lg border border-line-soft bg-brand/10 px-3 py-2 text-xs text-brand">
+            {msg}
+          </p>
+        )}
+        <Button onClick={submit} disabled={!valid || loading} className="w-fit">
+          <Check className="h-4 w-4" />{" "}
+          {hasPassword ? "Alterar senha" : "Definir senha"}
+        </Button>
+      </div>
+    </section>
   );
 }

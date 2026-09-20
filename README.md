@@ -80,9 +80,20 @@ Se o Google não estiver configurado, o botão “Continuar com Google” não a
   - `PWNED_CHECK` (`true`/`false`) e `CAPTCHA_SECRET` (opcional)
 
 ## Segurança
+- **Autenticação em todas as rotas de dados**: `/api/*` (transactions, cards, tags, goals, settings, import, state) exige sessão; `/api/auth/me` e `/password` também. Só login/cadastro/providers/logout são públicos.
 - Sessão por **cookie httpOnly** (`SameSite=Lax`) + **CSRF** (`x-csrf-token`, double-submit).
-- Senha: mínimo 8 com letra e número; **verificação de senha vazada** (Have I Been Pwned).
-- **Rate limit** por IP e **bloqueio progressivo** por conta após tentativas erradas.
-- Cadastro com **resposta genérica** (não revela se o e-mail existe) — por isso, após criar a conta, faça login.
+- Senhas com **Argon2id** (hash irreversível; migração automática de bcrypt no login) + **HIBP**.
+- **Tentativas de login**: bloqueio por conta (5 erros → 15 min) + **rate limit por IP** (login/cadastro 10/min; global 300/min) com `trustProxy`.
+- **Row Level Security (RLS)** no Postgres em `Transaction`, `Card`, `Tag` e `Goal`. A API conecta como um papel **sem bypass** (`fluxo_app`) e define `app.user_id` por transação — mesmo com um bug na aplicação, um usuário não acessa dados de outro. As migrations usam o dono via `DIRECT_URL`.
+- **Criptografia em repouso** dos campos de texto (`title`, `description`) com **AES-256-GCM** (chave em `ENCRYPTION_KEY`). Valores numéricos/datas permanecem em claro por precisão de cálculo/ordenação — use também a criptografia de disco do provedor.
+- Cadastro com **resposta genérica** (não revela se o e-mail existe) — após criar a conta, faça login.
 - Login com **tempo constante** (não vaza quais e-mails existem).
-- Em produção, `JWT_SECRET` é obrigatório e validado na inicialização; restrinja o CORS à origem do web.
+- **Backend blindado**: `@fastify/helmet`, limites de corpo (100 KB), timeouts, CORS restrito por `CORS_ORIGIN`, erros internos ocultos em produção e sem SQL cru.
+- **Definir/alterar senha** em Conta (também para contas criadas com Google).
+- Em produção, `JWT_SECRET` é obrigatório e validado na inicialização. Para DDoS na borda, use um CDN/WAF (ex.: Cloudflare) na frente do domínio.
+
+> Observação: `ENCRYPTION_KEY` **precisa ser estável** — trocá-la impede a leitura dos dados já gravados.
+
+## Tema
+- **Escuro (padrão)**, **claro** e **sistema**, com troca no rodapé da barra lateral e em **Conta › Aparência** (sem FOUC, preferência salva no navegador).
+

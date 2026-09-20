@@ -4,6 +4,7 @@ const API_PROXY_URL = process.env.API_PROXY_URL ?? "http://localhost:3333";
 
 const nextConfig: NextConfig = {
   transpilePackages: ["@fluxo/shared"],
+  devIndicators: false,
   async rewrites() {
     return [
       {

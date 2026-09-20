@@ -224,18 +224,8 @@ function MonthGrid({
         className="rounded-xl border border-line"
         style={{ width: width + 2 }}
       >
-        <div
-          className="sticky top-0 z-30 isolate w-full shadow-[0_8px_14px_-10px_rgba(0,0,0,0.85)]"
-          style={{
-            backgroundColor: "#1d1f23",
-            backgroundImage: "linear-gradient(#1d1f23, #1d1f23)",
-            willChange: "transform",
-          }}
-        >
-          <div
-            className="flex h-9 w-full items-center gap-2 border-b border-[#3a3e46] px-3"
-            style={{ backgroundColor: "#1d1f23" }}
-          >
+        <div className="sticky top-0 z-30 isolate w-full bg-panel shadow-[0_8px_14px_-10px_rgba(0,0,0,0.85)] will-change-transform">
+          <div className="flex h-9 w-full items-center gap-2 border-b border-line-soft bg-panel px-3">
             <h2 className="text-sm font-bold text-ink first-letter:uppercase">
               {formatMonthLong(date)}
             </h2>
@@ -243,10 +233,7 @@ function MonthGrid({
               {comp.count} {plural(comp.count, "dia", "dias")} com lançamento
             </span>
           </div>
-          <div
-            className="flex h-[42px] w-full border-b border-[#3a3e46]"
-            style={{ backgroundColor: "#1d1f23" }}
-          >
+          <div className="flex h-[42px] w-full border-b border-line bg-panel">
           <div
             className="flex shrink-0 items-center justify-center border-r border-line-soft text-sm font-bold"
             style={{ width: DAY_W }}
@@ -403,8 +390,8 @@ function MonthGrid({
                   </div>
                 ))}
                 <div
-                  className="flex shrink-0 items-center justify-center"
-                  style={{ width: SALDO_W, background: "#262a30" }}
+                  className="flex shrink-0 items-center justify-center bg-raised-2"
+                  style={{ width: SALDO_W }}
                 >
                   <span className="text-sm font-medium tabular-nums text-dim">
                     {formatBRL(comp.closing)}

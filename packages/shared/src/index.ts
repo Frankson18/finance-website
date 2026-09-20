@@ -90,6 +90,7 @@ export interface PublicUser {
   id: string;
   email: string;
   name: string | null;
+  hasPassword: boolean;
 }
 
 export interface AuthResponse {
@@ -188,6 +189,11 @@ export const registerSchema = z.object({
 export const loginSchema = z.object({
   email: emailSchema,
   password: z.string().min(1, "Informe a senha").max(100),
+});
+
+export const setPasswordSchema = z.object({
+  currentPassword: z.string().max(100).optional(),
+  password: passwordSchema,
 });
 
 export const DEFAULT_SETTINGS: Settings = {

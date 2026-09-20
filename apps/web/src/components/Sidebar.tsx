@@ -14,6 +14,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { useUI } from "./ui-context";
+import { ThemeQuickToggle } from "./ThemeToggle";
 import { cx } from "./ui";
 
 const NAV = [
@@ -102,8 +103,9 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
         />
       </nav>
 
-      <div className="mt-auto flex flex-col gap-1 px-2 pb-3">
+      <div className="mt-auto flex flex-col gap-1 px-2 pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
         <div className="mx-2 mb-2 h-px bg-line-soft" />
+        <ThemeQuickToggle />
         <Link href="/conta" onClick={onNavigate}>
           <Item
             active={pathname === "/conta"}

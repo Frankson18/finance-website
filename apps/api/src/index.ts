@@ -1,8 +1,9 @@
-import Fastify from "fastify";
+import Fastify, { type FastifyError } from "fastify";
 import cors from "@fastify/cors";
 import cookie from "@fastify/cookie";
 import jwt from "@fastify/jwt";
 import rateLimit from "@fastify/rate-limit";
+import helmet from "@fastify/helmet";
 import { assertProductionSecrets, env, googleEnabled } from "./env.js";
 import { prisma } from "./db.js";
 import { AUTH_COOKIE, CSRF_COOKIE } from "./constants.js";
@@ -11,13 +12,27 @@ import { dataRoutes } from "./routes/data.js";
 
 assertProductionSecrets();
 
-const app = Fastify({ logger: true, forceCloseConnections: true });
+const app = Fastify({
+  logger: true,
+  forceCloseConnections: true,
+  trustProxy: true,
+  bodyLimit: 100 * 1024, // 100 KB
+  connectionTimeout: 15_000,
+  keepAliveTimeout: 65_000,
+  requestTimeout: 20_000,
+});
+
+await app.register(helmet, {
+  contentSecurityPolicy: false,
+  crossOriginResourcePolicy: { policy: "same-site" },
+});
 
 await app.register(cors, {
-  origin: true,
+  origin: env.corsOrigins.includes("*") ? true : env.corsOrigins,
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+  maxAge: 600,
 });
 
 await app.register(cookie);
@@ -26,6 +41,17 @@ await app.register(rateLimit, {
   global: true,
   max: 300,
   timeWindow: "1 minute",
+});
+
+app.setErrorHandler((error: FastifyError, request, reply) => {
+  const status = error.statusCode ?? 500;
+  if (status >= 500) {
+    request.log.error({ err: error }, "unhandled error");
+    return reply
+      .code(status)
+      .send({ error: env.isProd ? "server_error" : error.message });
+  }
+  return reply.code(status).send({ error: error.message });
 });
 
 app.decorate("authenticate", async function (request, reply) {
