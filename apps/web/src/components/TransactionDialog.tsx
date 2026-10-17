@@ -398,20 +398,24 @@ export function TransactionDialog({
             { label: "Hoje", offset: 0 },
             { label: "Ontem", offset: -1 },
             { label: "Amanhã", offset: 1 },
-          ].map((q) => (
-            <Button
-              key={q.label}
-              size="sm"
-              variant="outline"
-              onClick={() => {
-                const d = new Date();
-                d.setDate(d.getDate() + q.offset);
-                setForm((f) => ({ ...f, date: toISODate(d) }));
-              }}
-            >
-              {q.label}
-            </Button>
-          ))}
+          ].map((q) => {
+            const d = new Date();
+            d.setDate(d.getDate() + q.offset);
+            const iso = toISODate(d);
+            const active = form.date === iso;
+            return (
+              <Button
+                key={q.label}
+                size="sm"
+                variant={active ? "primary" : "outline"}
+                aria-pressed={active}
+                onClick={() => setForm((f) => ({ ...f, date: iso }))}
+              >
+                {active ? <Check className="h-3.5 w-3.5" /> : null}
+                {q.label}
+              </Button>
+            );
+          })}
         </div>
 
         <Field label="Título">
